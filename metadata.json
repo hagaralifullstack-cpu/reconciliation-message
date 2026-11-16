@@ -1,0 +1,8 @@
+{
+  "name": "رسالة صلح",
+  "description": "رحلة اعتذار وعتاب محترمة وتفاعلية بالعامية المصرية تنتهي بشهادة صلح",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

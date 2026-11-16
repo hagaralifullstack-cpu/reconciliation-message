@@ -1,0 +1,33 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: #f8fafc;
+    color: #0f172a;
+    font-feature-settings: "kern" 1, "liga" 1;
+  }
+}
+
+.font-display {
+  font-family: var(--font-amiri), Georgia, serif;
+}
+
+.font-sans-ar {
+  font-family: var(--font-readex), system-ui, sans-serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

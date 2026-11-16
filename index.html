@@ -1,0 +1,2350 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>رسالة صلح | اعتذار صادق من القلب</title>
+  <meta name="description" content="رحلة اعتذار وتقدير محترمة وتفاعلية بالعامية المصرية تنتهي بشهادة صلح رسمية." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-page: #f8fafc;
+      --bg-card: #ffffff;
+      --ink-main: #0f172a;
+      --ink-muted: #475569;
+      --ink-soft: #64748b;
+      --indigo: #4338ca;
+      --indigo-dark: #312e81;
+      --indigo-deep: #1e1b4b;
+      --indigo-soft: #eef2ff;
+      --gold: #b45309;
+      --gold-bright: #d97706;
+      --gold-soft: #fffbeb;
+      --emerald: #047857;
+      --emerald-soft: #ecfdf5;
+      --border-soft: #e2e8f0;
+      --border-indigo: #e0e7ff;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Readex Pro", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(180deg, #f8fafc 0%, #f3f5fc 55%, #fffcf5 100%);
+      color: var(--ink-main);
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .font-display {
+      font-family: "Amiri", Georgia, serif;
+    }
+
+    button, input, textarea {
+      font-family: inherit;
+    }
+
+    /* Confetti Canvas */
+    #confetti-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 60;
+      display: none;
+    }
+
+    /* Top Header */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-indigo);
+    }
+
+    .topbar-inner {
+      max-width: 1152px;
+      margin: 0 auto;
+      height: 56px;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand-btn {
+      background: none;
+      border: none;
+      padding: 4px 0;
+      font-family: "Amiri", Georgia, serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--indigo-deep);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .brand-btn:hover {
+      color: var(--gold);
+    }
+
+    .header-meta {
+      font-size: 12px;
+      color: var(--ink-soft);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .header-meta strong {
+      color: var(--indigo-dark);
+      font-weight: 600;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .icon-btn {
+      min-height: 40px;
+      min-width: 40px;
+      padding: 0 10px;
+      border-radius: 10px;
+      border: 1px solid var(--border-soft);
+      background: #ffffff;
+      color: var(--ink-muted);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      white-space: nowrap;
+      transition: background-color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .icon-btn:hover {
+      background: #f8fafc;
+    }
+
+    .icon-btn.active-music {
+      border-color: #a5b4fc;
+      background: var(--indigo-soft);
+      color: var(--indigo-dark);
+    }
+
+    .icon-btn.active-nature {
+      border-color: #a7f3d0;
+      background: var(--emerald-soft);
+      color: var(--emerald);
+    }
+
+    .progress-track {
+      height: 2px;
+      width: 100%;
+      background: #f1f5f9;
+      display: none;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(270deg, #f59e0b 0%, #4f46e5 55%, #059669 100%);
+      transition: width 0.3s ease;
+    }
+
+    /* Main Layout */
+    .main-wrap {
+      max-width: 1152px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+      flex: 1;
+    }
+
+    .grid-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    @media (min-width: 1024px) {
+      .main-wrap {
+        padding: 36px 24px 56px;
+      }
+      .grid-layout {
+        grid-template-columns: 5fr 7fr;
+      }
+      .aside-sticky {
+        position: sticky;
+        top: 76px;
+      }
+    }
+
+    /* Character Stage Card */
+    .stage-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 18px;
+      border: 1px solid var(--border-soft);
+      background: #ffffff;
+      padding: 18px;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+      user-select: none;
+    }
+
+    .stage-glow {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.65;
+      background: radial-gradient(circle at 50% 45%, rgba(99, 102, 241, 0.08), rgba(226, 232, 240, 0.25) 60%, transparent 85%);
+      transition: background 0.4s ease;
+    }
+
+    .stage-glow.reconciled {
+      background: radial-gradient(circle at 50% 45%, rgba(16, 185, 129, 0.14), rgba(99, 102, 241, 0.06) 55%, transparent 80%);
+    }
+
+    .captions-row {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 6px;
+      min-height: 28px;
+      text-align: center;
+    }
+
+    .caption-chip {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 10px;
+    }
+
+    .caption-sender {
+      border: 1px solid var(--border-indigo);
+      background: #f5f7ff;
+      color: var(--indigo-deep);
+    }
+
+    .caption-recipient {
+      border: 1px solid var(--border-soft);
+      background: #f8fafc;
+      color: #334155;
+    }
+
+    .stage-svg {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 360px;
+      height: 175px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .char-names {
+      position: relative;
+      z-index: 2;
+      max-width: 300px;
+      margin: 4px auto 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--ink-soft);
+    }
+
+    /* Desktop Chapter List */
+    .chapters-card {
+      display: none;
+      margin-top: 16px;
+      border-radius: 18px;
+      border: 1px solid var(--border-indigo);
+      background: #ffffff;
+      padding: 16px;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
+    }
+
+    @media (min-width: 1024px) {
+      .chapters-card {
+        display: block;
+      }
+    }
+
+    .chapters-title {
+      margin: 0 0 10px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #92400e;
+    }
+
+    .chapters-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .chapter-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-size: 12px;
+      color: var(--ink-soft);
+    }
+
+    .chapter-item.current {
+      background: var(--indigo-soft);
+      color: var(--indigo-deep);
+      font-weight: 700;
+    }
+
+    .chapter-item.done {
+      color: var(--emerald);
+    }
+
+    /* Scene Card */
+    .scene-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 18px;
+      border: 1px solid var(--border-indigo);
+      background: #ffffff;
+      padding: 24px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+      animation: fadeSlideIn 0.35s ease;
+    }
+
+    @media (min-width: 640px) {
+      .scene-card {
+        padding: 32px;
+      }
+    }
+
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .kicker {
+      margin: 0 0 8px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gold);
+    }
+
+    .scene-title {
+      margin: 0 0 10px;
+      font-family: "Amiri", Georgia, serif;
+      font-size: 30px;
+      line-height: 1.3;
+      font-weight: 700;
+      color: var(--ink-main);
+    }
+
+    @media (min-width: 640px) {
+      .scene-title {
+        font-size: 36px;
+      }
+    }
+
+    .scene-subtitle {
+      margin: 0 0 20px;
+      font-size: 14px;
+      color: var(--ink-muted);
+      line-height: 1.75;
+    }
+
+    /* Form & Interactive Controls */
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    @media (min-width: 640px) {
+      .form-grid-2 {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .field-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 6px;
+    }
+
+    .input-box, .textarea-box {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid var(--border-soft);
+      background: #f8fafc;
+      padding: 11px 14px;
+      font-size: 14px;
+      color: var(--ink-main);
+      transition: border-color 0.15s ease, background-color 0.15s ease;
+    }
+
+    .input-box:focus, .textarea-box:focus {
+      outline: none;
+      border-color: var(--indigo);
+      background: #ffffff;
+    }
+
+    .textarea-box {
+      line-height: 1.75;
+      resize: vertical;
+    }
+
+    .choice-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    @media (min-width: 640px) {
+      .choice-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+      .choice-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+    }
+
+    .choice-btn {
+      min-height: 54px;
+      border-radius: 12px;
+      border: 1px solid var(--border-soft);
+      background: #ffffff;
+      padding: 12px 14px;
+      text-align: right;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 4px;
+      color: #1e293b;
+      transition: border-color 0.15s ease, background-color 0.15s ease;
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      border-color: #c7d2fe;
+      background: #f8fafc;
+    }
+
+    .choice-btn.selected {
+      border-color: var(--indigo);
+      background: #eef2ff;
+      color: var(--indigo-deep);
+    }
+
+    .choice-btn.selected-amber {
+      border-color: var(--gold-bright);
+      background: #fef3c7;
+      color: #451a03;
+    }
+
+    .choice-btn.selected-emerald {
+      border-color: var(--emerald);
+      background: var(--emerald-soft);
+      color: #064e3b;
+    }
+
+    .choice-btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    .choice-title {
+      font-size: 14px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .choice-desc {
+      font-size: 12px;
+      color: var(--ink-muted);
+      line-height: 1.6;
+    }
+
+    /* Primary & Secondary CTA Buttons */
+    .btn-row {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    @media (min-width: 640px) {
+      .btn-row {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+    }
+
+    .btn-primary {
+      min-height: 48px;
+      border: none;
+      border-radius: 12px;
+      padding: 12px 26px;
+      background: linear-gradient(270deg, #4338ca 0%, #312e81 100%);
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      white-space: nowrap;
+      transition: transform 0.12s ease, opacity 0.15s ease;
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      opacity: 0.94;
+    }
+
+    .btn-primary:active:not(:disabled) {
+      transform: scale(0.985);
+    }
+
+    .btn-primary:disabled {
+      background: #e2e8f0;
+      color: #64748b;
+      cursor: not-allowed;
+    }
+
+    .btn-amber {
+      min-height: 48px;
+      border: 1px solid #fcd34d;
+      border-radius: 12px;
+      padding: 12px 20px;
+      background: #fffbeb;
+      color: #78350f;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .btn-amber:hover {
+      background: #fef3c7;
+    }
+
+    .btn-outline {
+      min-height: 48px;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 12px 20px;
+      background: #ffffff;
+      color: #334155;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .btn-outline:hover {
+      background: #f8fafc;
+    }
+
+    /* Ambient Audio Strip in Confession */
+    .audio-strip {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      border-radius: 12px;
+      border: 1px solid var(--border-soft);
+      background: #f8fafc;
+      padding: 10px 14px;
+      margin-bottom: 18px;
+    }
+
+    .audio-strip-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--ink-muted);
+    }
+
+    .audio-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .audio-btn {
+      min-height: 36px;
+      padding: 6px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border-soft);
+      background: #ffffff;
+      color: #334155;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .audio-btn.is-music {
+      background: var(--indigo);
+      border-color: var(--indigo);
+      color: #ffffff;
+    }
+
+    .audio-btn.is-nature {
+      background: var(--emerald);
+      border-color: var(--emerald);
+      color: #ffffff;
+    }
+
+    /* Letter Box */
+    .letter-box {
+      border-radius: 14px;
+      border: 1px solid var(--border-indigo);
+      background: linear-gradient(135deg, rgba(238, 242, 255, 0.55) 0%, #ffffff 55%, rgba(255, 251, 235, 0.55) 100%);
+      padding: 20px;
+      margin-bottom: 18px;
+    }
+
+    .letter-box p {
+      margin: 0 0 12px;
+      font-size: 15px;
+      line-height: 1.9;
+      color: #1e293b;
+    }
+
+    .letter-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Bubbles Arena */
+    .bubbles-arena {
+      min-height: 270px;
+      border-radius: 16px;
+      border: 1px solid var(--border-indigo);
+      background: linear-gradient(135deg, #f8fafc 0%, #f5f7ff 55%, #fffcf3 100%);
+      padding: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .excuse-bubble {
+      min-height: 52px;
+      padding: 12px 20px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05);
+      animation: floatY 3.2s ease-in-out infinite;
+      transition: transform 0.15s ease, opacity 0.2s ease;
+    }
+
+    .excuse-bubble:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes floatY {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-7px); }
+    }
+
+    .final-apology-orb {
+      width: 158px;
+      height: 158px;
+      border-radius: 50%;
+      border: 4px solid #fde68a;
+      background: linear-gradient(135deg, #4338ca 0%, #1e1b4b 100%);
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 12px 28px rgba(49, 46, 129, 0.24);
+      margin: 0 auto 12px;
+      font-family: "Amiri", Georgia, serif;
+      font-size: 30px;
+      font-weight: 700;
+    }
+
+    /* Promises Jar + Signature */
+    .promises-split {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    @media (min-width: 768px) {
+      .promises-split {
+        grid-template-columns: 2fr 1fr;
+      }
+    }
+
+    .jar-box {
+      border-radius: 14px;
+      border: 1px solid #fde68a;
+      background: linear-gradient(180deg, rgba(255, 251, 235, 0.5) 0%, rgba(238, 242, 255, 0.45) 100%);
+      padding: 16px;
+      text-align: center;
+    }
+
+    .sig-pad-wrap {
+      position: relative;
+      border-radius: 14px;
+      border: 1.5px dashed rgba(217, 119, 6, 0.65);
+      background: #fffdf7;
+      overflow: hidden;
+      height: 150px;
+    }
+
+    #signature-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: crosshair;
+      touch-action: none;
+    }
+
+    .sig-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: #94a3b8;
+      pointer-events: none;
+    }
+
+    /* Scratch Card */
+    .scratch-wrap {
+      position: relative;
+      height: 220px;
+      width: 100%;
+      border-radius: 16px;
+      border: 2px solid rgba(252, 211, 77, 0.85);
+      background: linear-gradient(135deg, #fffbeb 0%, #ffffff 50%, #eef2ff 100%);
+      overflow: hidden;
+      user-select: none;
+    }
+
+    .scratch-underlying {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      gap: 8px;
+    }
+
+    #scratch-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      touch-action: none;
+    }
+
+    /* Hold-to-Forgive Button */
+    .hold-arena {
+      border-radius: 16px;
+      border: 1px solid var(--border-indigo);
+      background: linear-gradient(180deg, rgba(238, 242, 255, 0.4) 0%, rgba(255, 251, 235, 0.35) 100%);
+      padding: 28px 20px;
+      text-align: center;
+    }
+
+    .hold-btn {
+      position: relative;
+      overflow: hidden;
+      min-height: 66px;
+      width: 100%;
+      max-width: 360px;
+      border-radius: 16px;
+      border: 2px solid var(--indigo);
+      background: #ffffff;
+      color: var(--indigo-deep);
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      user-select: none;
+      touch-action: none;
+      padding: 14px 20px;
+    }
+
+    .hold-fill {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(270deg, #4338ca 0%, #312e81 55%, #047857 100%);
+      transform-origin: right center;
+      transform: scaleX(0);
+      pointer-events: none;
+    }
+
+    .hold-label {
+      position: relative;
+      z-index: 2;
+      transition: color 0.15s ease;
+    }
+
+    /* Ornate Official Certificate */
+    .cert-outer {
+      border-radius: 18px;
+      border: 3px solid var(--indigo-deep);
+      background: #fffdf7;
+      padding: 12px;
+      box-shadow: 0 8px 24px rgba(30, 27, 75, 0.08);
+    }
+
+    .cert-mid {
+      border-radius: 12px;
+      border: 2px solid rgba(180, 83, 9, 0.8);
+      padding: 4px;
+    }
+
+    .cert-inner {
+      position: relative;
+      border-radius: 8px;
+      border: 1px solid rgba(217, 119, 6, 0.5);
+      background: #fffdf7;
+      padding: 28px 20px;
+    }
+
+    @media (min-width: 640px) {
+      .cert-inner {
+        padding: 36px 32px;
+      }
+    }
+
+    .cert-corner {
+      position: absolute;
+      width: 28px;
+      height: 28px;
+      color: rgba(180, 83, 9, 0.72);
+      pointer-events: none;
+    }
+
+    .cert-footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      align-items: center;
+      text-align: center;
+      border-top: 1px solid #fde68a;
+      padding-top: 20px;
+      margin-top: 20px;
+    }
+
+    @media (min-width: 640px) {
+      .cert-footer-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+  <!-- Header -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <button type="button" class="brand-btn" id="brand-home-btn">رسالة صلح</button>
+      <div class="header-meta" id="header-meta">
+        <strong id="header-scene-label">تجهيز الرسالة</strong>
+        <span id="header-step-count" class="hidden"></span>
+      </div>
+      <div class="header-actions">
+        <button type="button" class="icon-btn hidden" id="btn-back" aria-label="رجوع">رجوع</button>
+        <button type="button" class="icon-btn" id="btn-ambient" title="تشغيل موسيقى هادئة أو صوت طبيعة">صوت هادئ</button>
+        <button type="button" class="icon-btn" id="btn-mute" aria-label="كتم أو تشغيل الصوت">🔊</button>
+      </div>
+    </div>
+    <div class="progress-track" id="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+  </header>
+
+  <!-- Main Workspace -->
+  <main class="main-wrap">
+    <div class="grid-layout">
+      <!-- Aside: Interactive Character Stage & Desktop Chapters -->
+      <aside class="aside-sticky">
+        <div class="stage-card" id="stage-card">
+          <div class="stage-glow" id="stage-glow"></div>
+          <div class="captions-row" id="captions-row">
+            <div id="sender-caption-slot"></div>
+            <div id="recipient-caption-slot"></div>
+          </div>
+
+          <!-- Original Two Minimal SVG Characters -->
+          <svg viewBox="0 0 320 175" class="stage-svg" role="img" aria-hidden="true">
+            <ellipse cx="160" cy="154" rx="115" ry="9" fill="#E2E8F0" opacity="0.7" />
+            <path id="reconcile-arc" d="M 135 64 Q 160 34 185 64" fill="none" stroke="#4F46E5" stroke-width="2" stroke-dasharray="4 4" opacity="0" />
+            <g id="reconcile-heart" opacity="0">
+              <circle cx="160" cy="34" r="14" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="1.5" />
+              <path d="M160 41 C160 41 151 35.5 151 30.8 C151 28.4 152.9 26.8 155 26.8 C156.5 26.8 158 27.6 158.8 29 C159.6 27.6 161.1 26.8 162.6 26.8 C164.7 26.8 166.6 28.4 166.6 30.8 C166.6 35.5 157.6 41 160 41 Z" fill="#059669" />
+            </g>
+
+            <!-- Recipient: Khaled (Left) -->
+            <g id="char-khaled" transform="translate(62, 0)">
+              <path d="M -22 146 C -22 118, -16 104, 0 104 C 16 104, 22 118, 22 146 Z" fill="#1E293B" />
+              <path d="M -7 104 L 0 113 L 7 104" fill="none" stroke="#94A3B8" stroke-width="1.5" />
+              <path id="khaled-arm" d="M -18 118 Q -24 132 -16 138" fill="none" stroke="#1E293B" stroke-width="6.5" stroke-linecap="round" />
+              <g id="khaled-head">
+                <circle cx="0" cy="79" r="21" fill="#F1D4BA" />
+                <path d="M -21 76 C -21 60, -10 54, 2 55 C 15 55, 22 63, 21 76 C 17 69, 9 67, 0 67 C -9 67, -16 70, -21 76 Z" fill="#0F172A" />
+                <circle id="khaled-eye-l" cx="-6" cy="79" r="2.1" fill="#0F172A" />
+                <circle id="khaled-eye-r" cx="7" cy="79" r="2.1" fill="#0F172A" />
+                <g id="khaled-brows">
+                  <path d="M -10 73 L -3 74.5" stroke="#0F172A" stroke-width="1.6" stroke-linecap="round" />
+                  <path d="M 4 74.5 L 11 73" stroke="#0F172A" stroke-width="1.6" stroke-linecap="round" />
+                </g>
+                <path id="khaled-mouth" d="M -4 91 Q 1 88 6 91" fill="none" stroke="#0F172A" stroke-width="1.7" stroke-linecap="round" />
+              </g>
+            </g>
+
+            <!-- Sender: Habiba (Right) -->
+            <g id="char-habiba" transform="translate(258, 0)">
+              <path d="M -23 82 C -25 60, -12 52, 0 52 C 14 52, 25 62, 24 84 L 26 116 C 14 122, -14 122, -25 116 Z" fill="#3730A3" />
+              <path d="M -22 146 C -22 117, -15 104, 0 104 C 15 104, 22 117, 22 146 Z" fill="#4338CA" />
+              <path id="habiba-arm" d="M -16 118 Q -28 112 -26 102" fill="none" stroke="#4338CA" stroke-width="6.5" stroke-linecap="round" />
+              <g id="habiba-head">
+                <circle cx="0" cy="79" r="20.5" fill="#E0E7FF" opacity="0.25" />
+                <circle cx="0" cy="80" r="18.5" fill="#F5DBC3" />
+                <path d="M -19 77 C -17 61, 17 61, 19 77 C 11 69, -11 69, -19 77 Z" fill="#3730A3" />
+                <circle id="habiba-eye-l" cx="-6.5" cy="80" r="2" fill="#0F172A" />
+                <circle id="habiba-eye-r" cx="5.5" cy="80" r="2" fill="#0F172A" />
+                <circle cx="-11" cy="85" r="2.6" fill="#FDA4AF" opacity="0.45" />
+                <circle cx="10" cy="85" r="2.6" fill="#FDA4AF" opacity="0.45" />
+                <path id="habiba-mouth" d="M -4 90 Q 0 92 4 90" fill="none" stroke="#0F172A" stroke-width="1.6" stroke-linecap="round" />
+              </g>
+            </g>
+          </svg>
+
+          <div class="char-names">
+            <span id="stage-recipient-name">خالد</span>
+            <span aria-hidden="true" style="color:#f59e0b;">✦</span>
+            <span id="stage-sender-name">حبيبه</span>
+          </div>
+        </div>
+
+        <nav class="chapters-card" aria-label="مراحل الرحلة">
+          <p class="chapters-title">محطات الرحلة</p>
+          <ol class="chapters-list" id="chapters-list"></ol>
+        </nav>
+      </aside>
+
+      <!-- Active Scene Container -->
+      <section id="scene-root"></section>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var DEFAULT_APOLOGY =
+        'أنا حابة أعتذر لحضرتك عن الكلام اللي صدر مني، وعارفة إني غلطت جدًا في حق حضرتك، ومهما كان سبب زعلي أو ضيقي من التغيير اللي حصل في التعامل، ده ميدينيش الحق إني أقول كلام جارح أو أوصف حضرتك بصفات مش من حقي أحكم بيها.\n\n' +
+        'أنا وقتها اتكلمت بانفعال ومن غير ما أفكر في أثر كلامي، وخصوصًا لما قلت إن حضرتك شخص مؤذي وإن أنا بكرهك، ودي كانت كلمات قاسية ومش في محلها، وأنا فعلًا ندمانة إني قولتها.\n\n' +
+        'يمكن كان عندي عتاب أو استغراب من اللي حصل، وكان المفروض أعبّر عن ده بطريقة أرقى وأهدى من كده.\n\n' +
+        'أنا مش ببعت لحضرتك علشان أفرض عليك الرد أو أطلب منك تتجاوز اللي حصل، لكن علشان من حق حضرتك تسمع مني اعتذار واضح وصريح، خصوصًا إن كان بينا احترام وتقدير، وأنا مكنتش أحب إن الكلام اللي صدر مني يكون آخر حاجة تفضل في ذاكرتك عني.\n\n' +
+        'أتمنى تتقبل اعتذاري، وأتمنى لحضرتك كل خير واحترام وتقدير.';
+
+      var DEFAULT_MEMORY =
+        'كل احترام وتقدير بينا، ومواقفك المحترمة اللي عمري ما كنت أتمنى أنسى قيمتها في لحظة انفعال.';
+
+      var MISTAKE_PRESETS = [
+        { id: 'sincere', title: 'الاعتذار الصريح الكامل', text: DEFAULT_APOLOGY },
+        { id: 'words', title: 'كلام انفعالي في وقت غضب', text: 'أنا حابة أعتذر لحضرتك عن الكلام القاسي اللي قلته وقت انفعالي. مكانش يصح أبداً أتكلم بالطريقة دي مهما كنت متضايقة، وحق حضرتك عليا بكل احترام.' },
+        { id: 'misunderstanding', title: 'عتاب بأسلوب غير مناسب', text: 'يمكن كان جوايا عتاب أو ضيق من التغيير في التعامل، بس مكانش من حقي أعبّر عنه بكلام جارح. الاعتذار واجب، وتقدير حضرتك عندي كبير.' },
+        { id: 'respect', title: 'حفظ الاحترام والتقدير', text: 'ببعت لحضرتك الاعتذار ده عشان مكنتش أحب إن الكلام اللي فات يكون آخر صورة في ذاكرتك عني، ولأن بينا احترام وتقدير يستاهلوا الكلمة الطيبة.' }
+      ];
+
+      var FEELING_RESPONSES = {
+        bothered: {
+          label: 'اتضايقت',
+          description: 'الأسلوب والكلام كانوا تقال ومزعجين',
+          replyTitle: 'حق حضرتك عليا في أي ضيقة اتسببت فيها',
+          replyBody: function (rec, snd) {
+            return 'يا ' + rec + '، أنا عارفة إن الكلام اللي صدر مني كان تقيل ومش في محله، وحق حضرتك تزعل وتتضايق. ' + snd + ' بتعتذر بوضوح ومن غير ما تفرض على حضرتك رد، بس احترامك يهمها جداً.';
+          }
+        },
+        hurt: {
+          label: 'اتجرحت',
+          description: 'الكلمات كانت قاسية ومكنش يصح تتقال',
+          replyTitle: 'آسفة بجد على كل كلمة جرحت خاطر حضرتك',
+          replyBody: function (rec, snd) {
+            return 'سلامة خاطر حضرتك يا ' + rec + '. الكلمات اللي اتقالت وقت الانفعال كانت قاسية جداً ومش لايقة بيك ولا بالتقدير اللي كان بينا. ' + snd + ' ندمانة عليها فعلاً وحبت تعتذرلك بصدق.';
+          }
+        },
+        angry: {
+          label: 'اتعصبت',
+          description: 'الحكم والوصف مكانش من حقي أبداً',
+          replyTitle: 'لحضرتك كل الحق، وأنا بستقبل ده بكل احترام',
+          replyBody: function (rec, snd) {
+            return 'عند حضرتك كل الحق يا ' + rec + '. مهما كان سبب ضيقي، مكنش من حقي أوصف حضرتك بصفات مش فيك ولا أتكلم بانفعال. ' + snd + ' معترفة بغلطتها كاملة ومقدّرة حجم زعلك.';
+          }
+        }
+      };
+
+      var UPSET_LEVELS = [
+        { level: 1, label: 'متضايق شوية', extra: 'ومع ذلك وجود أي ضيقة في خاطر حضرتك يهمني جداً وميعديش من غير اعتذار صريح.' },
+        { level: 2, label: 'زعلان بجد', extra: 'ومقدّرة تماماً إن الكلمات القاسية بتسيب أثر، وعشان كده بعتذر لحضرتك بوضوح ومن غير تبرير.' },
+        { level: 3, label: 'متجرح وزعلان جداً', extra: 'ولحضرتك كل الحق في ده، وأنا فعلاً ندمانة على الانفعال ومتمسكة إن الاعتذار يوصلك بكل احترام.' }
+      ];
+
+      var EXCUSES = [
+        { id: 'angry-moment', text: 'كنت متعصبة ومنفعلة', bg: '#fff1f2', border: '#fecdd3', color: '#881337' },
+        { id: 'changed', text: 'كنت متضايقة من تغيير التعامل', bg: '#fffbeb', border: '#fde68a', color: '#78350f' },
+        { id: 'unintended', text: 'كلام طلع من غير تفكير', bg: '#f0f9ff', border: '#bae6fd', color: '#0c4a6e' },
+        { id: 'reproach', text: 'كان جوايا عتاب واستغراب', bg: '#f5f3ff', border: '#ddd6fe', color: '#4c1d95' },
+        { id: 'timing', text: 'لحظة انفعال وعدت', bg: '#f0fdfa', border: '#99f6e4', color: '#134e4a' }
+      ];
+
+      var PROMISE_CARDS = [
+        { id: 'calm', title: 'التعبير بهدوء ورُقي', detail: 'لو في عتاب أو استغراب، أعبّر عنه بأرقى وأهدى طريقة من غير انفعال.' },
+        { id: 'respect', title: 'حفظ الاحترام والتقدير', detail: 'مهما حصل خلاف، يفضل الاحترام والتقدير خط أحمر لا يُمس.' },
+        { id: 'words', title: 'كلام بحساب وتفكير', detail: 'أفكر في أثر كل كلمة قبل ما أقولها ومجرحش خاطر حضرتك أبداً.' },
+        { id: 'listen', title: 'الهدوء وقت الضيق', detail: 'آخد نفسي وأهدى قبل الكلام بدل التسرع في لحظة غضب.' },
+        { id: 'memory', title: 'تغليب العِشرة الطيبة', detail: 'تفضل الذكرى الكويسة والاحترام هما الأساس في تعاملنا.' },
+        { id: 'space', title: 'احترام مساحتك وقرارك', detail: 'من غير ضغط أو فرض أي رد، التقدير دايماً موجود في كل الأحوال.' }
+      ];
+
+      var REMOTE_GIFTS = [
+        'أوردر قهوة أو حاجة تحبها يوصلك دليفري',
+        'كتاب أو هدية رمزية توصل لحضرتك أونلاين',
+        'كارت شحن أو اشتراك تطبيق بتحبه',
+        'مكالمة رايقة أو قعدة كلام صافي عن بُعد'
+      ];
+
+      var MUTUAL_PRESETS = [
+        'الاعتذار مقبول، والمواقف بتعدي والاحترام بيفضل.',
+        'مفيش حاجة في نفسي، وأنا كمان بقدّر صراحتك واعتذارك.',
+        'نفتح صفحة صافية أساسها الهدوء والتقدير المتبادل.',
+        'حصل خير، وربنا يكتبلك كل خير واحترام دايماً.'
+      ];
+
+      var SCENE_LABELS = [
+        'تجهيز الرسالة',
+        'الاعتراف',
+        'أنا فاهم زعلك',
+        'مفيش أعذار',
+        'برطمان الوعود',
+        'تعويض عن بُعد',
+        'الصلح',
+        'شهادة الصلح'
+      ];
+
+      /* ================= Sound Engine (Web Audio API) ================= */
+      var SoundEngine = function () {
+        this.ctx = null;
+        this.muted = false;
+        this.ambientMode = 'off';
+        this.ambientGain = null;
+        this.musicTimer = null;
+        this.natureSource = null;
+        this.natureLfo = null;
+        this.chordIdx = 0;
+        this.lastScratch = 0;
+      };
+
+      SoundEngine.prototype.getCtx = function () {
+        if (this.muted) return null;
+        if (!this.ctx) {
+          var AC = window.AudioContext || window.webkitAudioContext;
+          if (AC) this.ctx = new AC();
+        }
+        if (this.ctx && this.ctx.state === 'suspended') {
+          this.ctx.resume().catch(function () {});
+        }
+        return this.ctx;
+      };
+
+      SoundEngine.prototype.setMuted = function (mute) {
+        this.muted = mute;
+        if (mute) {
+          this.stopAmbientNodes();
+        } else if (this.ambientMode !== 'off') {
+          this.startAmbient(this.ambientMode);
+        }
+      };
+
+      SoundEngine.prototype.setAmbientMode = function (mode) {
+        this.ambientMode = mode;
+        this.stopAmbientNodes();
+        if (mode !== 'off' && !this.muted) {
+          this.startAmbient(mode);
+        }
+      };
+
+      SoundEngine.prototype.stopAmbientNodes = function () {
+        if (this.musicTimer) { clearInterval(this.musicTimer); this.musicTimer = null; }
+        if (this.natureSource) { try { this.natureSource.stop(); this.natureSource.disconnect(); } catch (e) {} this.natureSource = null; }
+        if (this.natureLfo) { try { this.natureLfo.stop(); this.natureLfo.disconnect(); } catch (e) {} this.natureLfo = null; }
+        if (this.ambientGain) { try { this.ambientGain.disconnect(); } catch (e) {} this.ambientGain = null; }
+      };
+
+      SoundEngine.prototype.startAmbient = function (mode) {
+        var ctx = this.getCtx();
+        if (!ctx) return;
+        var master = ctx.createGain();
+        master.gain.setValueAtTime(0.001, ctx.currentTime);
+        master.gain.linearRampToValueAtTime(1, ctx.currentTime + 1.2);
+        master.connect(ctx.destination);
+        this.ambientGain = master;
+
+        var self = this;
+        if (mode === 'music') {
+          var chords = [
+            [261.63, 329.63, 392.0, 493.88],
+            [220.0, 261.63, 329.63, 392.0],
+            [174.61, 261.63, 329.63, 440.0],
+            [196.0, 293.66, 329.63, 493.88]
+          ];
+          var playChord = function () {
+            if (!self.ambientGain || self.muted || self.ambientMode !== 'music') return;
+            var ch = chords[self.chordIdx % chords.length];
+            self.chordIdx += 1;
+            ch.forEach(function (freq, idx) {
+              var start = ctx.currentTime + idx * 0.28;
+              var osc = ctx.createOscillator();
+              var flt = ctx.createBiquadFilter();
+              var g = ctx.createGain();
+              osc.type = idx === 0 ? 'sine' : 'triangle';
+              osc.frequency.setValueAtTime(freq, start);
+              flt.type = 'lowpass';
+              flt.frequency.setValueAtTime(950, start);
+              g.gain.setValueAtTime(0.0001, start);
+              g.gain.linearRampToValueAtTime(0.028, start + 0.6);
+              g.gain.exponentialRampToValueAtTime(0.0008, start + 4.4);
+              osc.connect(flt); flt.connect(g); g.connect(self.ambientGain);
+              osc.start(start); osc.stop(start + 4.5);
+            });
+          };
+          playChord();
+          this.musicTimer = setInterval(playChord, 4200);
+        } else if (mode === 'nature') {
+          var bufSize = ctx.sampleRate * 4;
+          var buf = ctx.createBuffer(1, bufSize, ctx.sampleRate);
+          var data = buf.getChannelData(0);
+          var b0 = 0, b1 = 0, b2 = 0;
+          for (var i = 0; i < bufSize; i++) {
+            var w = Math.random() * 2 - 1;
+            b0 = 0.99765 * b0 + w * 0.099046;
+            b1 = 0.963 * b1 + w * 0.2965164;
+            b2 = 0.57 * b2 + w * 1.0526913;
+            data[i] = (b0 + b1 + b2 + w * 0.1848) * 0.04;
+          }
+          var src = ctx.createBufferSource();
+          src.buffer = buf;
+          src.loop = true;
+          var flt = ctx.createBiquadFilter();
+          flt.type = 'lowpass';
+          flt.frequency.setValueAtTime(680, ctx.currentTime);
+          var rainGain = ctx.createGain();
+          rainGain.gain.setValueAtTime(0.28, ctx.currentTime);
+          var lfo = ctx.createOscillator();
+          var lfoGain = ctx.createGain();
+          lfo.frequency.setValueAtTime(0.14, ctx.currentTime);
+          lfoGain.gain.setValueAtTime(180, ctx.currentTime);
+          lfo.connect(lfoGain); lfoGain.connect(flt.frequency);
+          src.connect(flt); flt.connect(rainGain); rainGain.connect(master);
+          src.start(); lfo.start();
+          this.natureSource = src;
+          this.natureLfo = lfo;
+        }
+      };
+
+      SoundEngine.prototype.playTap = function () {
+        var ctx = this.getCtx(); if (!ctx) return;
+        var now = ctx.currentTime, o = ctx.createOscillator(), g = ctx.createGain();
+        o.type = 'sine'; o.frequency.setValueAtTime(520, now); o.frequency.exponentialRampToValueAtTime(340, now + 0.08);
+        g.gain.setValueAtTime(0.08, now); g.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+        o.connect(g); g.connect(ctx.destination); o.start(now); o.stop(now + 0.09);
+      };
+
+      SoundEngine.prototype.playChime = function (idx) {
+        var ctx = this.getCtx(); if (!ctx) return;
+        var notes = [440, 523.25, 587.33, 659.25, 783.99];
+        var now = ctx.currentTime, o = ctx.createOscillator(), g = ctx.createGain();
+        o.type = 'triangle'; o.frequency.setValueAtTime(notes[(idx || 0) % notes.length], now);
+        g.gain.setValueAtTime(0.09, now); g.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+        o.connect(g); g.connect(ctx.destination); o.start(now); o.stop(now + 0.36);
+      };
+
+      SoundEngine.prototype.playPop = function (remaining) {
+        var ctx = this.getCtx(); if (!ctx) return;
+        var now = ctx.currentTime, o = ctx.createOscillator(), g = ctx.createGain();
+        var base = 320 + (5 - remaining) * 75;
+        o.type = 'sine'; o.frequency.setValueAtTime(base, now); o.frequency.exponentialRampToValueAtTime(base * 1.9, now + 0.09);
+        g.gain.setValueAtTime(0.12, now); g.gain.exponentialRampToValueAtTime(0.001, now + 0.11);
+        o.connect(g); g.connect(ctx.destination); o.start(now); o.stop(now + 0.12);
+      };
+
+      SoundEngine.prototype.playScratch = function () {
+        var t = Date.now();
+        if (t - this.lastScratch < 75) return;
+        this.lastScratch = t;
+        var ctx = this.getCtx(); if (!ctx) return;
+        var now = ctx.currentTime, o = ctx.createOscillator(), g = ctx.createGain();
+        o.type = 'triangle'; o.frequency.setValueAtTime(900 + Math.random() * 400, now);
+        g.gain.setValueAtTime(0.025, now); g.gain.exponentialRampToValueAtTime(0.001, now + 0.03);
+        o.connect(g); g.connect(ctx.destination); o.start(now); o.stop(now + 0.035);
+      };
+
+      SoundEngine.prototype.playHold = function (progress) {
+        var ctx = this.getCtx(); if (!ctx) return;
+        var now = ctx.currentTime, o = ctx.createOscillator(), g = ctx.createGain();
+        o.type = 'sine'; o.frequency.setValueAtTime(280 + progress * 340, now);
+        g.gain.setValueAtTime(0.04, now); g.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
+        o.connect(g); g.connect(ctx.destination); o.start(now); o.stop(now + 0.16);
+      };
+
+      SoundEngine.prototype.playCelebration = function () {
+        var ctx = this.getCtx(); if (!ctx) return;
+        [523.25, 659.25, 783.99, 1046.5].forEach(function (f, i) {
+          var now = ctx.currentTime + i * 0.09, o = ctx.createOscillator(), g = ctx.createGain();
+          o.type = 'triangle'; o.frequency.setValueAtTime(f, now);
+          g.gain.setValueAtTime(0.11, now); g.gain.exponentialRampToValueAtTime(0.001, now + 0.75);
+          o.connect(g); g.connect(ctx.destination); o.start(now); o.stop(now + 0.78);
+        });
+      };
+
+      var sound = new SoundEngine();
+
+      /* ================= URL Params & State ================= */
+      var urlParams = new URLSearchParams(window.location.search);
+      var state = {
+        scene: urlParams.get('gift') === '1' ? 1 : 0,
+        senderName: urlParams.get('from') || 'حبيبه',
+        recipientName: urlParams.get('to') || 'خالد',
+        mistake: urlParams.get('mistake') || DEFAULT_APOLOGY,
+        specialMemory: urlParams.get('memory') || DEFAULT_MEMORY,
+        presetId: 'sincere',
+        confessionTyped: false,
+        memoryOpened: false,
+        selectedFeeling: null,
+        upsetLevel: 2,
+        poppedIds: [],
+        selectedPromises: [],
+        inkHex: '#1E1B4B',
+        signatureDataUrl: null,
+        couponRevealed: false,
+        giftChoice: REMOTE_GIFTS[0],
+        giftDetails: '',
+        reconciled: false,
+        approachProgress: 0,
+        mutualNote: '',
+        closingBadge: 'صافي ١٠٠٪',
+        certIssued: false
+      };
+
+      function esc(str) {
+        return String(str || '')
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      }
+
+      /* ================= Character Stage Updates ================= */
+      var stageCard = document.getElementById('stage-card');
+      var khaledHead = document.getElementById('khaled-head');
+      var habibaHead = document.getElementById('habiba-head');
+      var kEyeL = document.getElementById('khaled-eye-l');
+      var kEyeR = document.getElementById('khaled-eye-r');
+      var hEyeL = document.getElementById('habiba-eye-l');
+      var hEyeR = document.getElementById('habiba-eye-r');
+
+      stageCard.addEventListener('pointermove', function (e) {
+        var r = stageCard.getBoundingClientRect();
+        var nx = Math.max(-1, Math.min(1, ((e.clientX - r.left) / r.width - 0.5) * 2));
+        var ny = Math.max(-1, Math.min(1, ((e.clientY - r.top) / r.height - 0.5) * 2));
+        khaledHead.setAttribute('transform', 'translate(' + (nx * 2) + ', ' + (ny * 1.5) + ')');
+        habibaHead.setAttribute('transform', 'translate(' + (nx * 2) + ', ' + (ny * 1.5) + ')');
+        kEyeL.setAttribute('cx', -6 + nx * 2.2); kEyeL.setAttribute('cy', 79 + ny * 1.5);
+        kEyeR.setAttribute('cx', 7 + nx * 2.2); kEyeR.setAttribute('cy', 79 + ny * 1.5);
+        hEyeL.setAttribute('cx', -6.5 + nx * 2.2); hEyeL.setAttribute('cy', 80 + ny * 1.5);
+        hEyeR.setAttribute('cx', 5.5 + nx * 2.2); hEyeR.setAttribute('cy', 80 + ny * 1.5);
+      });
+
+      stageCard.addEventListener('pointerleave', function () {
+        khaledHead.setAttribute('transform', 'translate(0,0)');
+        habibaHead.setAttribute('transform', 'translate(0,0)');
+        kEyeL.setAttribute('cx', -6); kEyeL.setAttribute('cy', 79);
+        kEyeR.setAttribute('cx', 7); kEyeR.setAttribute('cy', 79);
+        hEyeL.setAttribute('cx', -6.5); hEyeL.setAttribute('cy', 80);
+        hEyeR.setAttribute('cx', 5.5); hEyeR.setAttribute('cy', 80);
+      });
+
+      function updateStageVisuals() {
+        var s = state.scene;
+        var isRec = state.reconciled || s === 7;
+        var prog = state.approachProgress;
+
+        document.getElementById('stage-sender-name').textContent = state.senderName || 'حبيبه';
+        document.getElementById('stage-recipient-name').textContent = state.recipientName || 'خالد';
+
+        var baseSep = (s === 4 || s === 5) ? 52 : (s === 2 || s === 3) ? 74 : 96;
+        var sx = isRec ? 178 : (s === 6 ? 258 - prog * 80 : 210 + baseSep / 2);
+        var rx = isRec ? 142 : (s === 6 ? 62 + prog * 80 : 110 - baseSep / 2);
+        var y = isRec ? -2 : 0;
+
+        document.getElementById('char-khaled').setAttribute('transform', 'translate(' + rx + ', ' + y + ')');
+        document.getElementById('char-habiba').setAttribute('transform', 'translate(' + sx + ', ' + y + ')');
+
+        var stageGlow = document.getElementById('stage-glow');
+        stageGlow.className = isRec ? 'stage-glow reconciled' : 'stage-glow';
+
+        document.getElementById('reconcile-heart').setAttribute('opacity', isRec ? '1' : '0');
+        var arc = document.getElementById('reconcile-arc');
+        if (isRec) {
+          arc.setAttribute('opacity', '0.9');
+          arc.setAttribute('stroke', '#059669');
+        } else if (s === 6 && prog > 0.4) {
+          arc.setAttribute('opacity', String(prog));
+          arc.setAttribute('stroke', '#4F46E5');
+        } else {
+          arc.setAttribute('opacity', '0');
+        }
+
+        var smiling = isRec || (s === 6 && prog > 0.72);
+        var warming = s === 4 || s === 5 || (s === 6 && prog > 0.35);
+
+        document.getElementById('khaled-brows').setAttribute('opacity', (s === 1 || s === 2) ? '1' : '0');
+        document.getElementById('khaled-mouth').setAttribute('d', smiling ? 'M -5 88 Q 1 93 7 88' : warming ? 'M -4 89 L 5 89' : 'M -4 91 Q 1 88 6 91');
+        document.getElementById('habiba-mouth').setAttribute('d', smiling ? 'M -5 89 Q 0 94 5 89' : 'M -4 90 Q 0 92 4 90');
+
+        document.getElementById('khaled-arm').setAttribute('d', isRec ? 'M 18 116 Q 34 118 36 128' : 'M -18 118 Q -24 132 -16 138');
+        document.getElementById('habiba-arm').setAttribute('d', isRec ? 'M -18 116 Q -34 118 -36 128' : 'M -16 118 Q -28 112 -26 102');
+
+        // Captions
+        var sCap = '';
+        if (s === 1) sCap = 'أنا غلطت وحقك عليا';
+        else if (s === 2 && state.selectedFeeling) sCap = 'مقدّرة زعلك جداً';
+        else if (s === 3) sCap = state.poppedIds.length === EXCUSES.length ? 'أنا آسفة بجد' : 'مفيش أي مبرر';
+        else if (s === 4) sCap = 'دي وعودي ليك';
+        else if (s === 5) sCap = 'هدية توصلك عن بُعد';
+        else if (s === 6) sCap = state.reconciled ? 'شكراً إنك صافي' : 'قرب خطوة كمان';
+        else if (s === 7) sCap = 'ربنا يديم الود';
+
+        var rCap = '';
+        if (s === 2 && state.selectedFeeling) {
+          rCap = state.selectedFeeling === 'bothered' ? 'اتضايقت بصراحة' : state.selectedFeeling === 'hurt' ? 'اتجرحت من الموقف' : 'اتعصبت وقتها';
+        } else if (s === 5 && state.couponRevealed) rCap = 'تم اختيار الهدية';
+        else if (s === 6 && state.reconciled) rCap = 'حصل خير يا غالية';
+        else if (s === 7) rCap = 'ميثاق مودة واحترام';
+
+        document.getElementById('sender-caption-slot').innerHTML = sCap ? '<span class="caption-chip caption-sender">' + esc(sCap) + '</span>' : '';
+        document.getElementById('recipient-caption-slot').innerHTML = rCap ? '<span class="caption-chip caption-recipient">' + esc(rCap) + '</span>' : '';
+      }
+
+      /* ================= Confetti ================= */
+      function launchConfetti() {
+        var canvas = document.getElementById('confetti-canvas');
+        var ctx = canvas.getContext('2d');
+        canvas.style.display = 'block';
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        var colors = ['#4F46E5', '#059669', '#F59E0B', '#0EA5E9', '#EC4899'];
+        var parts = [];
+        for (var i = 0; i < 110; i++) {
+          parts.push({
+            x: canvas.width * (0.2 + Math.random() * 0.6),
+            y: canvas.height * 0.42 + (Math.random() - 0.5) * 60,
+            vx: (Math.random() - 0.5) * 11,
+            vy: -Math.random() * 12 - 3,
+            sz: 6 + Math.random() * 6,
+            c: colors[i % colors.length],
+            rot: Math.random() * 6.28,
+            vr: (Math.random() - 0.5) * 0.25,
+            a: 1
+          });
+        }
+        function tick() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          var alive = false;
+          parts.forEach(function (p) {
+            p.x += p.vx; p.y += p.vy; p.vy += 0.26; p.vx *= 0.99; p.rot += p.vr;
+            if (p.y > canvas.height * 0.78) p.a = Math.max(0, p.a - 0.025);
+            if (p.a > 0.02 && p.y < canvas.height + 40) {
+              alive = true;
+              ctx.save(); ctx.globalAlpha = p.a; ctx.translate(p.x, p.y); ctx.rotate(p.rot);
+              ctx.fillStyle = p.c; ctx.fillRect(-p.sz / 2, -p.sz / 3, p.sz, p.sz * 0.66);
+              ctx.restore();
+            }
+          });
+          if (alive) requestAnimationFrame(tick);
+          else canvas.style.display = 'none';
+        }
+        requestAnimationFrame(tick);
+      }
+
+      /* ================= Header & Sidebar Render ================= */
+      function updateChrome() {
+        document.getElementById('header-scene-label').textContent = SCENE_LABELS[state.scene];
+        var stepEl = document.getElementById('header-step-count');
+        var backBtn = document.getElementById('btn-back');
+        var track = document.getElementById('progress-track');
+        var fill = document.getElementById('progress-fill');
+
+        if (state.scene > 0) {
+          stepEl.textContent = '· ' + state.scene + ' من ٧';
+          stepEl.classList.remove('hidden');
+          backBtn.classList.remove('hidden');
+          track.style.display = 'block';
+          fill.style.width = Math.round((state.scene / 7) * 100) + '%';
+        } else {
+          stepEl.classList.add('hidden');
+          backBtn.classList.add('hidden');
+          track.style.display = 'none';
+        }
+
+        var ambBtn = document.getElementById('btn-ambient');
+        ambBtn.className = 'icon-btn' + (sound.ambientMode === 'music' ? ' active-music' : sound.ambientMode === 'nature' ? ' active-nature' : '');
+        ambBtn.textContent = sound.ambientMode === 'off' ? 'صوت هادئ' : sound.ambientMode === 'music' ? 'موسيقى ♫' : 'طبيعة ☂';
+        document.getElementById('btn-mute').textContent = sound.muted ? '🔇' : '🔊';
+
+        var list = document.getElementById('chapters-list');
+        list.innerHTML = SCENE_LABELS.slice(1).map(function (lbl, idx) {
+          var n = idx + 1;
+          var cls = state.scene === n ? 'chapter-item current' : state.scene > n ? 'chapter-item done' : 'chapter-item';
+          var mark = state.scene === n ? 'الآن' : state.scene > n ? 'تمت ✓' : '';
+          return '<li class="' + cls + '"><span>0' + n + '. ' + esc(lbl) + '</span><span>' + mark + '</span></li>';
+        }).join('');
+      }
+
+      /* ================= Scene Renderers ================= */
+      var root = document.getElementById('scene-root');
+      var typewriterTimer = null;
+
+      function renderScene() {
+        if (typewriterTimer) { clearInterval(typewriterTimer); typewriterTimer = null; }
+        updateChrome();
+        updateStageVisuals();
+
+        var s = state.scene;
+        if (s === 0) renderSetup();
+        else if (s === 1) renderConfession();
+        else if (s === 2) renderEmpathy();
+        else if (s === 3) renderNoExcuses();
+        else if (s === 4) renderPromises();
+        else if (s === 5) renderCompensation();
+        else if (s === 6) renderReconciliation();
+        else renderCertificate();
+      }
+
+      function renderSetup() {
+        var presetsHtml = MISTAKE_PRESETS.map(function (p) {
+          var sel = state.presetId === p.id && state.mistake === p.text;
+          return '<button type="button" class="choice-btn ' + (sel ? 'selected' : '') + '" data-preset="' + p.id + '">' +
+            '<span class="choice-title"><span>' + esc(p.title) + '</span>' + (sel ? '<span>✓</span>' : '') + '</span></button>';
+        }).join('');
+
+        root.innerHTML =
+          '<div class="scene-card">' +
+            '<p class="kicker">٠١ · تجهيز الرسالة</p>' +
+            '<h1 class="scene-title">رحلة اعتذار صادقة من القلب</h1>' +
+            '<p class="scene-subtitle">كل حاجة متجهزة باحترام ومودة، تقدري تعدّلي الكلام براحتك وبعدها تبدأي الرحلة أو تنسخي رابط لـ <strong>' + esc(state.recipientName || 'خالد') + '</strong> يفتح على الاعتراف مباشرة.</p>' +
+            '<div class="form-grid-2">' +
+              '<div><label class="field-label" for="inp-sender">اسمك</label><input id="inp-sender" class="input-box" value="' + esc(state.senderName) + '" /></div>' +
+              '<div><label class="field-label" for="inp-recipient">اسم الشخص الغالي</label><input id="inp-recipient" class="input-box" value="' + esc(state.recipientName) + '" /></div>' +
+            '</div>' +
+            '<label class="field-label">اختاري صيغة الاعتذار أو عدّليها</label>' +
+            '<div class="choice-grid cols-2" style="margin-bottom:14px;">' + presetsHtml + '</div>' +
+            '<div style="margin-bottom:14px;"><label class="field-label" for="inp-mistake">نص الاعتراف</label><textarea id="inp-mistake" class="textarea-box" rows="6">' + esc(state.mistake) + '</textarea></div>' +
+            '<div><label class="field-label" for="inp-memory">رسالة تقدير إضافية (تظهر داخل ظرف الاعتراف)</label><input id="inp-memory" class="input-box" value="' + esc(state.specialMemory) + '" /></div>' +
+            '<div class="btn-row">' +
+              '<button type="button" class="btn-primary" id="btn-start-journey">ابدأ الرحلة دلوقتي ←</button>' +
+              '<button type="button" class="btn-amber" id="btn-copy-link">نسخ رابط الإرسال لـ ' + esc(state.recipientName || 'خالد') + '</button>' +
+            '</div>' +
+          '</div>';
+
+        document.getElementById('inp-sender').addEventListener('input', function (e) {
+          state.senderName = e.target.value;
+          updateStageVisuals();
+        });
+        document.getElementById('inp-recipient').addEventListener('input', function (e) {
+          state.recipientName = e.target.value;
+          var copyBtn = document.getElementById('btn-copy-link');
+          if (copyBtn) copyBtn.textContent = 'نسخ رابط الإرسال لـ ' + (state.recipientName || 'خالد');
+          updateStageVisuals();
+        });
+        document.getElementById('inp-mistake').addEventListener('input', function (e) {
+          state.presetId = 'custom';
+          state.mistake = e.target.value;
+        });
+        document.getElementById('inp-memory').addEventListener('input', function (e) {
+          state.specialMemory = e.target.value;
+        });
+
+        root.querySelectorAll('[data-preset]').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var pid = btn.getAttribute('data-preset');
+            var found = MISTAKE_PRESETS.find(function (x) { return x.id === pid; });
+            if (found) {
+              sound.playTap();
+              state.presetId = found.id;
+              state.mistake = found.text;
+              renderSetup();
+            }
+          });
+        });
+
+        document.getElementById('btn-start-journey').addEventListener('click', function () {
+          sound.playChime(0);
+          state.confessionTyped = false;
+          state.memoryOpened = false;
+          state.selectedFeeling = null;
+          state.poppedIds = [];
+          state.selectedPromises = [];
+          state.signatureDataUrl = null;
+          state.couponRevealed = false;
+          state.reconciled = false;
+          state.approachProgress = 0;
+          state.certIssued = false;
+          state.scene = 1;
+          renderScene();
+        });
+
+        document.getElementById('btn-copy-link').addEventListener('click', function () {
+          sound.playChime(2);
+          var p = new URLSearchParams();
+          p.set('from', state.senderName.trim() || 'حبيبه');
+          p.set('to', state.recipientName.trim() || 'خالد');
+          if (state.mistake.trim() && state.mistake.trim() !== DEFAULT_APOLOGY.trim()) p.set('mistake', state.mistake.trim());
+          if (state.specialMemory.trim() && state.specialMemory.trim() !== DEFAULT_MEMORY.trim()) p.set('memory', state.specialMemory.trim());
+          p.set('gift', '1');
+          var base = window.location.origin + window.location.pathname;
+          var full = base + '?' + p.toString();
+          var btn = document.getElementById('btn-copy-link');
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(full).catch(function () {});
+          }
+          btn.textContent = '✓ تم نسخ الرابط المباشر';
+          setTimeout(function () {
+            if (document.getElementById('btn-copy-link')) {
+              document.getElementById('btn-copy-link').textContent = 'نسخ رابط الإرسال لـ ' + (state.recipientName || 'خالد');
+            }
+          }, 2800);
+        });
+      }
+
+      function renderConfession() {
+        var headline = 'يا ' + (state.recipientName || 'خالد') + '.. أنا غلطت في حق حضرتك';
+        var paras = state.mistake.split(/\n\s*\n/).map(function (x) { return x.trim(); }).filter(Boolean);
+        var parasHtml = paras.map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('');
+
+        root.innerHTML =
+          '<div class="scene-card">' +
+            '<p class="kicker">٠١ · الاعتراف · رسالة صادقة من ' + esc(state.senderName) + '</p>' +
+            '<h1 class="scene-title" id="typewriter-h1" style="min-height:48px;"></h1>' +
+            '<div class="audio-strip">' +
+              '<span class="audio-strip-label">خلفية صوتية هادئة أثناء القراءة</span>' +
+              '<div class="audio-pills">' +
+                '<button type="button" id="amb-music" class="audio-btn ' + (sound.ambientMode === 'music' ? 'is-music' : '') + '">موسيقى هادئة</button>' +
+                '<button type="button" id="amb-nature" class="audio-btn ' + (sound.ambientMode === 'nature' ? 'is-nature' : '') + '">صوت طبيعة خفيف</button>' +
+                (sound.ambientMode !== 'off' ? '<button type="button" id="amb-off" class="audio-btn">إيقاف</button>' : '') +
+              '</div>' +
+            '</div>' +
+            '<div class="letter-box">' +
+              '<p style="font-size:12px;font-weight:700;color:#3730a3;margin-bottom:8px;">نص الاعتذار</p>' +
+              parasHtml +
+            '</div>' +
+            (state.specialMemory ? (
+              !state.memoryOpened
+                ? '<button type="button" class="btn-amber" style="width:100%;" id="btn-open-memory">✉ افتح ظرف التقدير قبل ما نكمل</button>'
+                : '<div style="border-radius:12px;border:1px solid #fde68a;background:#fffbeb;padding:16px;margin-bottom:8px;"><p style="margin:0 0 4px;font-size:12px;font-weight:700;color:#92400e;">✦ رسالة تقدير لحضرتك</p><p style="margin:0;font-size:14px;color:#1e293b;line-height:1.7;">' + esc(state.specialMemory) + '</p></div>'
+            ) : '') +
+            '<div class="btn-row"><button type="button" class="btn-primary" id="btn-next-1">كمّل معايا ←</button></div>' +
+          '</div>';
+
+        var h1 = document.getElementById('typewriter-h1');
+        if (typewriterTimer) {
+          clearInterval(typewriterTimer);
+          typewriterTimer = null;
+        }
+        if (state.confessionTyped) {
+          if (h1) h1.textContent = headline;
+        } else {
+          var idx = 0;
+          typewriterTimer = setInterval(function () {
+            idx += 1;
+            if (h1) h1.textContent = headline.slice(0, idx);
+            if (idx >= headline.length) {
+              clearInterval(typewriterTimer);
+              typewriterTimer = null;
+              state.confessionTyped = true;
+            }
+          }, 55);
+        }
+
+        document.getElementById('amb-music').addEventListener('click', function () {
+          sound.setMuted(false);
+          sound.setAmbientMode(sound.ambientMode === 'music' ? 'off' : 'music');
+          updateChrome();
+          renderConfession();
+        });
+        document.getElementById('amb-nature').addEventListener('click', function () {
+          sound.setMuted(false);
+          sound.setAmbientMode(sound.ambientMode === 'nature' ? 'off' : 'nature');
+          updateChrome();
+          renderConfession();
+        });
+        var offBtn = document.getElementById('amb-off');
+        if (offBtn) {
+          offBtn.addEventListener('click', function () {
+            sound.setAmbientMode('off');
+            updateChrome();
+            renderConfession();
+          });
+        }
+
+        var memBtn = document.getElementById('btn-open-memory');
+        if (memBtn) {
+          memBtn.addEventListener('click', function () {
+            sound.playChime(2);
+            state.memoryOpened = true;
+            renderConfession();
+          });
+        }
+
+        document.getElementById('btn-next-1').addEventListener('click', function () {
+          sound.playChime(1);
+          state.scene = 2;
+          renderScene();
+        });
+      }
+
+      function renderEmpathy() {
+        var feelingsHtml = ['bothered', 'hurt', 'angry'].map(function (k) {
+          var item = FEELING_RESPONSES[k];
+          var sel = state.selectedFeeling === k;
+          return '<button type="button" class="choice-btn ' + (sel ? 'selected' : '') + '" data-feeling="' + k + '">' +
+            '<span class="choice-title"><span>' + esc(item.label) + '</span>' + (sel ? '<span>✓</span>' : '') + '</span>' +
+            '<span class="choice-desc">' + esc(item.description) + '</span></button>';
+        }).join('');
+
+        var levelsHtml = UPSET_LEVELS.map(function (lvl) {
+          var sel = state.upsetLevel === lvl.level;
+          return '<button type="button" class="choice-btn ' + (sel ? 'selected-amber' : '') + '" style="min-height:44px;text-align:center;" data-level="' + lvl.level + '">' +
+            '<span class="choice-title" style="justify-content:center;font-size:12px;">' + esc(lvl.label) + '</span></button>';
+        }).join('');
+
+        var replyHtml = '';
+        if (state.selectedFeeling) {
+          var r = FEELING_RESPONSES[state.selectedFeeling];
+          var lvlObj = UPSET_LEVELS.find(function (l) { return l.level === state.upsetLevel; }) || UPSET_LEVELS[1];
+          replyHtml = '<div class="letter-box" style="margin-top:16px;"><p style="font-weight:700;color:#1e1b4b;margin-bottom:6px;">' + esc(r.replyTitle) + '</p><p style="margin:0;">' + esc(r.replyBody(state.recipientName, state.senderName) + ' ' + lvlObj.extra) + '</p></div>';
+        }
+
+        root.innerHTML =
+          '<div class="scene-card">' +
+            '<p class="kicker">٠٢ · أنا فاهم زعلك</p>' +
+            '<h2 class="scene-title">بصراحة يا ' + esc(state.recipientName) + '.. حسيت بإيه وقتها؟</h2>' +
+            '<p class="scene-subtitle">مهم أسمع إحساسك الأول عشان أكون فاهمة اللي عدّى عليك مش بس اللي أنا شايفاه.</p>' +
+            '<div class="choice-grid cols-3" style="margin-bottom:14px;">' + feelingsHtml + '</div>' +
+            '<div style="border-radius:12px;border:1px solid #e2e8f0;background:#f8fafc;padding:14px;">' +
+              '<span class="field-label" style="font-size:12px;">ودرجة زعلك دلوقتي قد إيه؟</span>' +
+              '<div class="choice-grid cols-3">' + levelsHtml + '</div>' +
+            '</div>' +
+            replyHtml +
+            '<div class="btn-row"><button type="button" class="btn-primary" id="btn-next-2" ' + (!state.selectedFeeling ? 'disabled' : '') + '>الخطوة اللي بعدها ←</button></div>' +
+          '</div>';
+
+        root.querySelectorAll('[data-feeling]').forEach(function (b) {
+          b.addEventListener('click', function () {
+            sound.playChime(1);
+            state.selectedFeeling = b.getAttribute('data-feeling');
+            updateStageVisuals();
+            renderEmpathy();
+          });
+        });
+        root.querySelectorAll('[data-level]').forEach(function (b) {
+          b.addEventListener('click', function () {
+            sound.playTap();
+            state.upsetLevel = Number(b.getAttribute('data-level'));
+            renderEmpathy();
+          });
+        });
+        document.getElementById('btn-next-2').addEventListener('click', function () {
+          sound.playChime(3);
+          state.scene = 3;
+          renderScene();
+        });
+      }
+
+      function renderNoExcuses() {
+        var remaining = EXCUSES.filter(function (b) { return state.poppedIds.indexOf(b.id) === -1; });
+        var allPopped = remaining.length === 0;
+
+        var arenaHtml = '';
+        if (!allPopped) {
+          arenaHtml = remaining.map(function (b, idx) {
+            return '<button type="button" class="excuse-bubble" data-pop="' + b.id + '" style="background:' + b.bg + ';border:1px solid ' + b.border + ';color:' + b.color + ';animation-delay:' + (idx * 0.25) + 's;">' + esc(b.text) + '</button>';
+          }).join('');
+        } else {
+          arenaHtml = '<div style="text-align:center;"><div class="final-apology-orb">أنا آسفة</div><p style="margin:0;font-size:14px;color:#334155;">من غير أي &ldquo;بس&rdquo; أو أعذار.. الغلطة غلطتي وبعتذر لحضرتك بكل احترام يا ' + esc(state.recipientName) + '.</p></div>';
+        }
+
+        root.innerHTML =
+          '<div class="scene-card">' +
+            '<div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:600;margin-bottom:8px;">' +
+              '<span style="color:#b45309;">٠٣ · مفيش أعذار</span>' +
+              '<span style="color:#64748b;">' + (allPopped ? 'مفيش ولا عذر فاضل' : 'باقي ' + remaining.length + ' من ' + EXCUSES.length) + '</span>' +
+            '</div>' +
+            '<h2 class="scene-title">فرقع الأعذار اللي ملهاش لازمة</h2>' +
+            '<p class="scene-subtitle">ممكن أي حد يطلع لنفسه مبررات، بس عشان حضرتك غالي يا ' + esc(state.recipientName) + ' اضغط على كل فقاعة عذر وشيلها من طريقنا.</p>' +
+            '<div class="bubbles-arena">' + arenaHtml + '</div>' +
+            '<div class="btn-row"><button type="button" class="btn-primary" id="btn-next-3" ' + (!allPopped ? 'disabled' : '') + '>' + (allPopped ? 'ندخل على برطمان الوعود ←' : 'فرقع كل الأعذار الأول') + '</button></div>' +
+          '</div>';
+
+        root.querySelectorAll('[data-pop]').forEach(function (b) {
+          b.addEventListener('click', function () {
+            var id = b.getAttribute('data-pop');
+            if (state.poppedIds.indexOf(id) === -1) {
+              state.poppedIds.push(id);
+              sound.playPop(EXCUSES.length - state.poppedIds.length);
+              updateStageVisuals();
+              renderNoExcuses();
+            }
+          });
+        });
+
+        document.getElementById('btn-next-3').addEventListener('click', function () {
+          sound.playChime(4);
+          state.scene = 4;
+          renderScene();
+        });
+      }
+
+      function renderPromises() {
+        var ready = state.selectedPromises.length === 3;
+        var cardsHtml = PROMISE_CARDS.map(function (c) {
+          var sel = state.selectedPromises.indexOf(c.id) !== -1;
+          var dis = !sel && state.selectedPromises.length >= 3;
+          return '<button type="button" class="choice-btn ' + (sel ? 'selected' : '') + '" data-promise="' + c.id + '" ' + (dis ? 'disabled' : '') + '>' +
+            '<span class="choice-title"><span>' + esc(c.title) + '</span>' + (sel ? '<span>✓</span>' : '') + '</span>' +
+            '<span class="choice-desc">' + esc(c.detail) + '</span></button>';
+        }).join('');
+
+        var notesSvg = state.selectedPromises.map(function (pid, idx) {
+          var pos = [
+            { x: 54, y: 141, rot: -11, fill: '#4338CA' },
+            { x: 98, y: 143, rot: 13, fill: '#047857' },
+            { x: 76, y: 109, rot: -4, fill: '#B45309' }
+          ][idx];
+          return '<g transform="translate(' + pos.x + ',' + pos.y + ') rotate(' + pos.rot + ')"><rect x="-21" y="-13" width="42" height="26" rx="5" fill="' + pos.fill + '" /><line x1="-12" y1="-3" x2="12" y2="-3" stroke="#FFF" stroke-width="1.8" stroke-linecap="round" /><line x1="-10" y1="4" x2="8" y2="4" stroke="#FFF" stroke-width="1.8" stroke-linecap="round" /></g>';
+        }).join('');
+
+        var sigSection = '';
+        if (ready) {
+          sigSection =
+            '<div style="border-top:1px solid #e2e8f0;padding-top:18px;margin-top:18px;">' +
+              '<div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px;">' +
+                '<div><strong style="font-size:14px;">لوحة التوقيع المعتمد</strong><p style="margin:2px 0 0;font-size:12px;color:#64748b;">اختار لون الحبر وامضي بإصبعك لتأكيد الوعود</p></div>' +
+                '<div style="display:flex;gap:6px;align-items:center;">' +
+                  '<button type="button" class="audio-btn" data-ink="#1E1B4B" style="border-color:' + (state.inkHex === '#1E1B4B' ? '#4338ca' : '#e2e8f0') + ';">كحلي</button>' +
+                  '<button type="button" class="audio-btn" data-ink="#065F46" style="border-color:' + (state.inkHex === '#065F46' ? '#047857' : '#e2e8f0') + ';">زمردي</button>' +
+                  '<button type="button" class="audio-btn" data-ink="#92400E" style="border-color:' + (state.inkHex === '#92400E' ? '#b45309' : '#e2e8f0') + ';">ذهبي</button>' +
+                  '<button type="button" class="audio-btn" id="btn-clear-sig">مسح</button>' +
+                '</div>' +
+              '</div>' +
+              '<div class="sig-pad-wrap"><canvas id="signature-canvas"></canvas><div class="sig-placeholder" id="sig-placeholder" style="display:' + (state.signatureDataUrl ? 'none' : 'flex') + ';">ارسم توقيعك بإصبعك هنا</div></div>' +
+            '</div>';
+        }
+
+        root.innerHTML =
+          '<div class="scene-card">' +
+            '<div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:600;margin-bottom:8px;">' +
+              '<span style="color:#b45309;">٠٤ · برطمان الوعود</span>' +
+              '<span style="color:#64748b;">اخترت ' + state.selectedPromises.length + ' من ٣ وعود</span>' +
+            '</div>' +
+            '<h2 class="scene-title">اختار ٣ وعود تحطهم في البرطمان</h2>' +
+            '<p class="scene-subtitle">الاعتذار الحقيقي بيتشاف في الالتزام، اختار ٣ وعود تحب يكونوا ميثاق بينا.</p>' +
+            '<div class="promises-split">' +
+              '<div class="choice-grid cols-2">' + cardsHtml + '</div>' +
+              '<div class="jar-box">' +
+                '<svg viewBox="0 0 160 195" style="width:140px;height:175px;">' +
+                  '<rect x="44" y="14" width="72" height="14" rx="5" fill="#B45309" />' +
+                  '<rect x="50" y="28" width="60" height="9" rx="3" fill="#312E81" />' +
+                  '<path d="M 48 41 Q 80 47 112 41" fill="none" stroke="#D97706" stroke-width="3.5" />' +
+                  '<circle cx="80" cy="44" r="4" fill="#F59E0B" />' +
+                  '<path d="M 48 39 L 112 39 C 127 43 134 55 134 74 L 134 160 C 134 173 123 181 108 181 L 52 181 C 37 181 26 173 26 160 L 26 74 C 26 55 33 43 48 39 Z" fill="#FFF" stroke="#94A3B8" stroke-width="2.2" />' +
+                  notesSvg +
+                '</svg>' +
+                '<div style="font-size:12px;font-weight:600;color:#334155;">برطمان الوعود (' + state.selectedPromises.length + '/٣)</div>' +
+              '</div>' +
+            '</div>' +
+            sigSection +
+            '<div class="btn-row"><button type="button" class="btn-primary" id="btn-next-4" ' + (!ready || !state.signatureDataUrl ? 'disabled' : '') + '>' + (!ready ? 'اختار ٣ وعود الأول' : !state.signatureDataUrl ? 'امضي لتأكيد الوعود' : 'شوف كارت التعويض ←') + '</button></div>' +
+          '</div>';
+
+        root.querySelectorAll('[data-promise]').forEach(function (b) {
+          b.addEventListener('click', function () {
+            var id = b.getAttribute('data-promise');
+            var idx = state.selectedPromises.indexOf(id);
+            if (idx !== -1) {
+              sound.playTap();
+              state.selectedPromises.splice(idx, 1);
+            } else if (state.selectedPromises.length < 3) {
+              sound.playChime(state.selectedPromises.length);
+              state.selectedPromises.push(id);
+            }
+            renderPromises();
+          });
+        });
+
+        if (ready) {
+          var canvas = document.getElementById('signature-canvas');
+          var ctx = canvas.getContext('2d');
+          var dpr = Math.min(window.devicePixelRatio || 1, 2);
+          var rect = canvas.getBoundingClientRect();
+          canvas.width = rect.width * dpr;
+          canvas.height = rect.height * dpr;
+          ctx.scale(dpr, dpr);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+          ctx.lineWidth = 2.8;
+          ctx.strokeStyle = state.inkHex;
+
+          if (state.signatureDataUrl) {
+            var img = new Image();
+            img.onload = function () { ctx.drawImage(img, 0, 0, rect.width, rect.height); };
+            img.src = state.signatureDataUrl;
+          }
+
+          var drawing = false;
+          canvas.addEventListener('pointerdown', function (e) {
+            canvas.setPointerCapture(e.pointerId);
+            ctx.strokeStyle = state.inkHex;
+            var r = canvas.getBoundingClientRect();
+            ctx.beginPath();
+            ctx.moveTo(e.clientX - r.left, e.clientY - r.top);
+            drawing = true;
+            document.getElementById('sig-placeholder').style.display = 'none';
+          });
+          canvas.addEventListener('pointermove', function (e) {
+            if (!drawing) return;
+            var r = canvas.getBoundingClientRect();
+            ctx.lineTo(e.clientX - r.left, e.clientY - r.top);
+            ctx.stroke();
+          });
+          function finishStroke() {
+            if (!drawing) return;
+            drawing = false;
+            state.signatureDataUrl = canvas.toDataURL('image/png');
+            sound.playTap();
+            var nextBtn = document.getElementById('btn-next-4');
+            if (nextBtn) { nextBtn.disabled = false; nextBtn.textContent = 'شوف كارت التعويض ←'; }
+          }
+          canvas.addEventListener('pointerup', finishStroke);
+          canvas.addEventListener('pointercancel', finishStroke);
+
+          root.querySelectorAll('[data-ink]').forEach(function (b) {
+            b.addEventListener('click', function () {
+              sound.playTap();
+              state.inkHex = b.getAttribute('data-ink');
+              ctx.strokeStyle = state.inkHex;
+              root.querySelectorAll('[data-ink]').forEach(function (other) {
+                var k = other.getAttribute('data-ink');
+                other.style.borderColor = k === state.inkHex
+                  ? (k === '#1E1B4B' ? '#4338ca' : k === '#065F46' ? '#047857' : '#b45309')
+                  : '#e2e8f0';
+              });
+            });
+          });
+          document.getElementById('btn-clear-sig').addEventListener('click', function () {
+            sound.playTap();
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            state.signatureDataUrl = null;
+            renderPromises();
+          });
+        }
+
+        document.getElementById('btn-next-4').addEventListener('click', function () {
+          sound.playChime(2);
+          state.scene = 5;
+          renderScene();
+        });
+      }
+
+      function renderCompensation() {
+        var giftOptsHtml = REMOTE_GIFTS.map(function (g) {
+          var sel = state.giftChoice === g;
+          return '<button type="button" class="choice-btn ' + (sel ? 'selected-amber' : '') + '" style="min-height:48px;" data-gift="' + esc(g) + '">' +
+            '<span class="choice-title" style="font-size:12px;"><span>' + esc(g) + '</span>' + (sel ? '<span>✓</span>' : '') + '</span></button>';
+        }).join('');
+
+        root.innerHTML =
+          '<div class="scene-card">' +
+            '<div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:600;margin-bottom:8px;">' +
+              '<span style="color:#b45309;">٠٥ · تعويض عن بُعد</span>' +
+              '<span id="scratch-pct" style="color:#64748b;">' + (state.couponRevealed ? 'تم كشف الكوبون' : 'اخدش الكارت') + '</span>' +
+            '</div>' +
+            '<h2 class="scene-title">عشان رضاك غالي.. ليك كارت تعويض عن بُعد</h2>' +
+            '<p class="scene-subtitle">حرّك إصبعك على الكارت الذهبي عشان تكشف الهدية اللي ' + esc(state.senderName) + ' تقدر تبعتها أو تعملها لحضرتك عن بُعد يا ' + esc(state.recipientName) + '.</p>' +
+            '<div class="scratch-wrap">' +
+              '<div class="scratch-underlying">' +
+                '<div style="font-size:28px;">🎁</div>' +
+                '<div style="font-size:12px;font-weight:700;color:#92400e;">كوبون صلح عن بُعد</div>' +
+                '<div class="font-display" style="font-size:26px;font-weight:700;color:#0f172a;">هدية أو طلب أونلاين لحد عندك</div>' +
+                '<p style="margin:0;font-size:13px;color:#475569;">توصلك لحد باب بيتك أو أونلاين من ' + esc(state.senderName) + '.</p>' +
+              '</div>' +
+              (!state.couponRevealed ? '<canvas id="scratch-canvas"></canvas>' : '') +
+            '</div>' +
+            (state.couponRevealed ? (
+              '<div style="margin-top:16px;border-radius:14px;border:1px solid #fde68a;background:rgba(255,251,235,0.55);padding:16px;">' +
+                '<p style="margin:0 0 10px;font-size:13px;font-weight:700;color:#0f172a;">اختار الهدية أو الطلب اللي تحب أوصله لحضرتك عن بُعد</p>' +
+                '<div class="choice-grid cols-2" style="margin-bottom:10px;">' + giftOptsHtml + '</div>' +
+                '<input id="inp-gift-detail" class="input-box" value="' + esc(state.giftDetails) + '" placeholder="اكتب اسم الحاجة أو التفاصيل اللي تحبها (اختياري)..." />' +
+              '</div>'
+            ) : '') +
+            '<div class="btn-row" style="justify-content:space-between;">' +
+              '<button type="button" class="btn-primary" id="btn-next-5" ' + (!state.couponRevealed ? 'disabled' : '') + '>' + (state.couponRevealed ? 'نوصل لحظة الصلح ←' : 'اخدش الكارت الأول') + '</button>' +
+              (!state.couponRevealed ? '<button type="button" class="btn-outline" id="btn-fast-reveal" style="min-height:42px;font-size:12px;">كشف سريع بدون خدش</button>' : '') +
+            '</div>' +
+          '</div>';
+
+        if (!state.couponRevealed) {
+          var sc = document.getElementById('scratch-canvas');
+          var ctx = sc.getContext('2d');
+          var r = sc.getBoundingClientRect();
+          var dpr = Math.min(window.devicePixelRatio || 1, 2);
+          sc.width = r.width * dpr;
+          sc.height = r.height * dpr;
+          ctx.scale(dpr, dpr);
+
+          var grad = ctx.createLinearGradient(0, 0, r.width, r.height);
+          grad.addColorStop(0, '#D97706'); grad.addColorStop(0.5, '#FCD34D'); grad.addColorStop(1, '#B45309');
+          ctx.fillStyle = grad;
+          ctx.fillRect(0, 0, r.width, r.height);
+          ctx.fillStyle = '#451A03'; ctx.font = 'bold 16px sans-serif'; ctx.textAlign = 'center';
+          ctx.fillText('اخدش الكارت الذهبي بإصبعك هنا', r.width / 2, r.height / 2 - 8);
+          ctx.fillStyle = '#78350F'; ctx.font = '13px sans-serif';
+          ctx.fillText('هدية تعويض عن بُعد مستنياك تحت الطبقة دي', r.width / 2, r.height / 2 + 16);
+
+          var scratching = false, moves = 0;
+          function scratchAt(cx, cy) {
+            var box = sc.getBoundingClientRect();
+            ctx.save();
+            ctx.globalCompositeOperation = 'destination-out';
+            ctx.beginPath();
+            ctx.arc(cx - box.left, cy - box.top, 24, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.restore();
+            sound.playScratch();
+            moves += 1;
+            if (moves % 6 === 0) {
+              var px = ctx.getImageData(0, 0, sc.width, sc.height).data;
+              var cleared = 0, total = 0;
+              for (var i = 3; i < px.length; i += 64) { total++; if (px[i] < 128) cleared++; }
+              var pct = total ? Math.round((cleared / total) * 100) : 0;
+              var pctEl = document.getElementById('scratch-pct');
+              if (pctEl) pctEl.textContent = 'تم خدش ' + pct + '%';
+              if (pct >= 40) {
+                sound.playCelebration();
+                state.couponRevealed = true;
+                updateStageVisuals();
+                renderCompensation();
+              }
+            }
+          }
+          sc.addEventListener('pointerdown', function (e) { sc.setPointerCapture(e.pointerId); scratching = true; scratchAt(e.clientX, e.clientY); });
+          sc.addEventListener('pointermove', function (e) { if (scratching) scratchAt(e.clientX, e.clientY); });
+          sc.addEventListener('pointerup', function () { scratching = false; });
+          sc.addEventListener('pointercancel', function () { scratching = false; });
+
+          document.getElementById('btn-fast-reveal').addEventListener('click', function () {
+            sound.playCelebration();
+            state.couponRevealed = true;
+            updateStageVisuals();
+            renderCompensation();
+          });
+        } else {
+          root.querySelectorAll('[data-gift]').forEach(function (b) {
+            b.addEventListener('click', function () {
+              sound.playTap();
+              state.giftChoice = b.getAttribute('data-gift');
+              renderCompensation();
+            });
+          });
+          document.getElementById('inp-gift-detail').addEventListener('input', function (e) {
+            state.giftDetails = e.target.value;
+          });
+        }
+
+        document.getElementById('btn-next-5').addEventListener('click', function () {
+          sound.playChime(3);
+          state.scene = 6;
+          renderScene();
+        });
+      }
+
+      function renderReconciliation() {
+        var pct = state.reconciled ? 100 : Math.round(state.approachProgress * 100);
+        var bodyHtml = '';
+        if (!state.reconciled) {
+          bodyHtml =
+            '<div class="hold-arena">' +
+              '<button type="button" class="hold-btn" id="btn-hold">' +
+                '<span class="hold-fill" id="hold-fill" style="transform:scaleX(' + state.approachProgress + ');"></span>' +
+                '<span class="hold-label" id="hold-label">🤝 اضغط مطوّل علشان تسامح</span>' +
+              '</button>' +
+              '<p id="hold-hint" style="margin:12px 0 0;font-size:12px;color:#475569;">اضغط وفضّل ماسك لحد ١٠٠٪</p>' +
+            '</div>';
+        } else {
+          bodyHtml =
+            '<div style="border-radius:16px;border:1px solid #a7f3d0;background:linear-gradient(135deg,#ecfdf5,#fff);padding:24px;text-align:center;">' +
+              '<p class="font-display" style="margin:0 0 8px;font-size:26px;font-weight:700;color:#064e3b;">ربنا يديم الود والاحترام بينكم 🤗</p>' +
+              '<p style="margin:0 0 16px;font-size:14px;color:#065f46;">دلوقتي باقي خطوة واحدة أخيرة عشان نطبع شهادة الصلح الرسمية بتاعتكم.</p>' +
+              '<button type="button" class="btn-primary" style="background:linear-gradient(270deg,#047857,#065f46);" id="btn-next-6">نكتب كلمة الختام ونطلع الشهادة ←</button>' +
+            '</div>';
+        }
+
+        root.innerHTML =
+          '<div class="scene-card">' +
+            '<div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:600;margin-bottom:8px;">' +
+              '<span style="color:#b45309;">٠٦ · لحظة الصلح</span>' +
+              '<span id="hold-pct" style="color:#64748b;">' + (state.reconciled ? 'تم الصلح ١٠٠٪' : pct + '%') + '</span>' +
+            '</div>' +
+            '<h2 class="scene-title">' + (state.reconciled ? 'قلب ' + esc(state.recipientName) + ' الكبير صفي' : 'لو قبلت اعتذار ' + esc(state.senderName) + '.. قرّب المسافة') + '</h2>' +
+            '<p class="scene-subtitle">' + (state.reconciled ? 'شكراً إنك فتحت صفحة صافية من جديد، المعزة والاحترام دايماً بيغلبوا أي زعل.' : 'خليك ضاغط مطوّل على الزرار اللي تحت، وشوف الشخصيتين بيقربوا من بعض لحد ما يتصالحوا.') + '</p>' +
+            bodyHtml +
+          '</div>';
+
+        if (!state.reconciled) {
+          var holdBtn = document.getElementById('btn-hold');
+          var holdFill = document.getElementById('hold-fill');
+          var holdLabel = document.getElementById('hold-label');
+          var holdPct = document.getElementById('hold-pct');
+          var holdHint = document.getElementById('hold-hint');
+          var rafId = null, startT = 0, lastBucket = -1, activeHold = false;
+
+          function stopHold() {
+            if (!activeHold) return;
+            activeHold = false;
+            if (rafId) cancelAnimationFrame(rafId);
+            lastBucket = -1;
+            if (!state.reconciled) {
+              state.approachProgress = 0;
+              holdFill.style.transform = 'scaleX(0)';
+              holdLabel.style.color = '#1e1b4b';
+              holdPct.textContent = '0%';
+              holdHint.textContent = 'اضغط وفضّل ماسك لحد ١٠٠٪';
+              updateStageVisuals();
+            }
+          }
+
+          function tick(now) {
+            if (!activeHold) return;
+            var p = Math.min(1, (now - startT) / 2100);
+            state.approachProgress = p;
+            var pctNow = Math.round(p * 100);
+            holdFill.style.transform = 'scaleX(' + p + ')';
+            holdLabel.style.color = pctNow > 45 ? '#ffffff' : '#1e1b4b';
+            holdPct.textContent = pctNow + '%';
+            updateStageVisuals();
+
+            var bucket = Math.floor(p * 6);
+            if (bucket !== lastBucket && p < 1) {
+              lastBucket = bucket;
+              sound.playHold(p);
+            }
+
+            if (p >= 1) {
+              activeHold = false;
+              state.reconciled = true;
+              sound.playCelebration();
+              launchConfetti();
+              renderReconciliation();
+              updateStageVisuals();
+              return;
+            }
+            rafId = requestAnimationFrame(tick);
+          }
+
+          holdBtn.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+          holdBtn.addEventListener('pointerdown', function (e) {
+            e.preventDefault();
+            try { holdBtn.setPointerCapture(e.pointerId); } catch (err) {}
+            activeHold = true;
+            startT = performance.now();
+            holdHint.textContent = 'بيقربوا من بعض أهوه.. خليك ضاغط!';
+            rafId = requestAnimationFrame(tick);
+          });
+          holdBtn.addEventListener('pointerup', stopHold);
+          holdBtn.addEventListener('pointercancel', stopHold);
+        } else {
+          document.getElementById('btn-next-6').addEventListener('click', function () {
+            sound.playChime(4);
+            state.scene = 7;
+            renderScene();
+          });
+        }
+      }
+
+      function renderCertificate() {
+        var promises = PROMISE_CARDS.filter(function (p) { return state.selectedPromises.indexOf(p.id) !== -1; });
+        var dateStr = new Intl.DateTimeFormat('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' }).format(new Date());
+        var giftSummary = state.giftDetails.trim() ? state.giftChoice + ' (' + state.giftDetails.trim() + ')' : state.giftChoice;
+
+        if (!state.certIssued) {
+          var mutualHtml = MUTUAL_PRESETS.map(function (m) {
+            var sel = state.mutualNote === m;
+            return '<button type="button" class="choice-btn ' + (sel ? 'selected' : '') + '" data-mut="' + esc(m) + '">' +
+              '<span class="choice-title" style="font-size:13px;font-weight:500;"><span>' + esc(m) + '</span>' + (sel ? '<span>✓</span>' : '') + '</span></button>';
+          }).join('');
+
+          var rateHtml = ['صافي ١٠٠٪', 'صفحة جديدة تماماً', 'الود والاحترام أغلى'].map(function (r) {
+            var sel = state.closingBadge === r;
+            return '<button type="button" class="choice-btn ' + (sel ? 'selected-emerald' : '') + '" style="min-height:44px;text-align:center;" data-rate="' + esc(r) + '">' +
+              '<span class="choice-title" style="justify-content:center;font-size:12px;">' + esc(r) + '</span></button>';
+          }).join('');
+
+          root.innerHTML =
+            '<div class="scene-card">' +
+              '<p class="kicker">٠٧ · ونعتذر لبعض</p>' +
+              '<h2 class="scene-title">&ldquo;وأنا كمان آسف لو..&rdquo;</h2>' +
+              '<p class="scene-subtitle">يا ' + esc(state.recipientName) + '، لو في حاجة تحب تقولها في ختام الصلح اختار من الكروت أو اكتب كلمتك عشان تتحط جوه الشهادة الرسمية.</p>' +
+              '<div class="choice-grid cols-2" style="margin-bottom:14px;">' + mutualHtml + '</div>' +
+              '<div style="margin-bottom:14px;"><label class="field-label" for="inp-mut">أو اكتب جملة من عندك (اختياري)</label><textarea id="inp-mut" class="textarea-box" rows="2" placeholder="مثال: حصل خير، ومقامك محفوظ دايماً...">' + esc(state.mutualNote) + '</textarea></div>' +
+              '<div style="margin-bottom:14px;"><span class="field-label" style="font-size:12px;">تقييم ختام الصلح</span><div class="choice-grid cols-3">' + rateHtml + '</div></div>' +
+              '<div class="btn-row"><button type="button" class="btn-primary" style="background:linear-gradient(270deg,#d97706,#b45309,#312e81);" id="btn-issue-cert">🏅 إصدار شهادة الصلح الرسمية</button></div>' +
+            '</div>';
+
+          root.querySelectorAll('[data-mut]').forEach(function (b) {
+            b.addEventListener('click', function () { sound.playTap(); state.mutualNote = b.getAttribute('data-mut'); renderCertificate(); });
+          });
+          root.querySelectorAll('[data-rate]').forEach(function (b) {
+            b.addEventListener('click', function () { sound.playTap(); state.closingBadge = b.getAttribute('data-rate'); renderCertificate(); });
+          });
+          document.getElementById('inp-mut').addEventListener('input', function (e) { state.mutualNote = e.target.value; });
+          document.getElementById('btn-issue-cert').addEventListener('click', function () {
+            sound.playCelebration();
+            state.certIssued = true;
+            renderCertificate();
+          });
+          return;
+        }
+
+        var certPromisesHtml = promises.map(function (p) {
+          return '<div style="border-radius:10px;border:1px solid #fde68a;background:#fff;padding:10px;text-align:right;"><div style="font-size:12px;font-weight:700;color:#1e1b4b;">' + esc(p.title) + '</div><div style="font-size:11px;color:#475569;margin-top:4px;">' + esc(p.detail) + '</div></div>';
+        }).join('');
+
+        root.innerHTML =
+          '<div>' +
+            '<div class="cert-outer">' +
+              '<div class="cert-mid">' +
+                '<div class="cert-inner">' +
+                  '<svg class="cert-corner" style="top:8px;right:8px;" viewBox="0 0 32 32" fill="none"><path d="M30 2 H10 C5 2 2 5 2 10 V30" stroke="currentColor" stroke-width="2" /><circle cx="10" cy="10" r="2.5" fill="currentColor" /></svg>' +
+                  '<svg class="cert-corner" style="top:8px;left:8px;" viewBox="0 0 32 32" fill="none"><path d="M2 2 H22 C27 2 30 5 30 10 V30" stroke="currentColor" stroke-width="2" /><circle cx="22" cy="10" r="2.5" fill="currentColor" /></svg>' +
+                  '<svg class="cert-corner" style="bottom:8px;right:8px;" viewBox="0 0 32 32" fill="none"><path d="M30 30 H10 C5 30 2 27 2 22 V2" stroke="currentColor" stroke-width="2" /><circle cx="10" cy="22" r="2.5" fill="currentColor" /></svg>' +
+                  '<svg class="cert-corner" style="bottom:8px;left:8px;" viewBox="0 0 32 32" fill="none"><path d="M2 30 H22 C27 30 30 27 30 22 V2" stroke="currentColor" stroke-width="2" /><circle cx="22" cy="22" r="2.5" fill="currentColor" /></svg>' +
+
+                  '<div style="text-align:center;border-bottom:1px solid #fde68a;padding-bottom:18px;margin-bottom:18px;">' +
+                    '<p style="margin:0 0 6px;font-size:11px;font-weight:700;color:#92400e;">وثيقة مودة واحترام متبادل · رقم SOLH-2026</p>' +
+                    '<h2 class="font-display" style="margin:0 0 6px;font-size:36px;font-weight:700;color:#1e1b4b;">شهادة صلح رسمية</h2>' +
+                    '<p style="margin:0 0 6px;font-size:13px;color:#475569;">تشهد هذه الوثيقة بتصفية النفوس وإغلاق باب الزعل بين</p>' +
+                    '<p class="font-display" style="margin:0 0 6px;font-size:26px;font-weight:700;color:#312e81;">' + esc(state.senderName) + ' <span style="color:#d97706;">✦</span> ' + esc(state.recipientName) + '</p>' +
+                    '<div style="font-size:12px;color:#64748b;">تحريراً في ' + esc(dateStr) + ' · <strong style="color:#047857;">' + esc(state.closingBadge) + '</strong></div>' +
+                  '</div>' +
+
+                  '<div style="margin-bottom:16px;">' +
+                    '<div style="text-align:center;font-size:12px;font-weight:700;color:#78350f;margin-bottom:8px;">الوعود الثلاثة المحفوظة في برطمان العهد</div>' +
+                    '<div class="choice-grid cols-3">' + certPromisesHtml + '</div>' +
+                  '</div>' +
+
+                  '<div style="border-radius:12px;border:1px solid #fde68a;background:rgba(255,251,235,0.6);padding:14px;text-align:center;margin-bottom:16px;">' +
+                    '<div style="font-size:12px;font-weight:700;color:#78350f;margin-bottom:4px;">كلمة ' + esc(state.recipientName) + ' الختامية</div>' +
+                    '<div class="font-display" style="font-size:18px;color:#1e293b;">&ldquo;' + esc(state.mutualNote.trim() || 'حصل خير، وربنا يديم الاحترام والتقدير.') + '&rdquo;</div>' +
+                  '</div>' +
+
+                  '<div style="border-radius:12px;border:1px solid #c7d2fe;background:linear-gradient(270deg,#eef2ff,#fff,#fffbeb);padding:14px;text-align:center;">' +
+                    '<div style="font-size:12px;font-weight:600;color:#3730a3;">🎁 كوبون التعويض عن بُعد من ' + esc(state.senderName) + '</div>' +
+                    '<div style="font-size:14px;font-weight:700;color:#0f172a;margin-top:4px;">' + esc(giftSummary) + '</div>' +
+                  '</div>' +
+
+                  '<div class="cert-footer-grid">' +
+                    '<div><div style="font-size:11px;font-weight:600;color:#64748b;margin-bottom:4px;">توقيع ' + esc(state.recipientName) + '</div>' + (state.signatureDataUrl ? '<img src="' + state.signatureDataUrl + '" alt="التوقيع" style="height:54px;object-fit:contain;" />' : '<div class="font-display" style="font-size:22px;font-weight:700;">' + esc(state.recipientName) + '</div>') + '<div style="height:1px;width:120px;background:#cbd5e1;margin:4px auto 0;"></div></div>' +
+                    '<div><svg viewBox="0 0 110 110" style="width:92px;height:92px;"><circle cx="55" cy="55" r="46" fill="#FEF3C7" stroke="#B45309" stroke-width="2.5" /><circle cx="55" cy="55" r="39" fill="none" stroke="#D97706" stroke-width="1.5" stroke-dasharray="4 3" /><text x="55" y="48" text-anchor="middle" fill="#92400E" font-size="12" font-weight="bold">ميثاق مودة</text><text x="55" y="67" text-anchor="middle" fill="#065F46" font-size="12" font-weight="bold">مُعتمد ✓</text></svg></div>' +
+                    '<div><div style="font-size:11px;font-weight:600;color:#64748b;margin-bottom:6px;">تأكيد ' + esc(state.senderName) + '</div><div class="font-display" style="font-size:24px;font-weight:700;color:#1e1b4b;">' + esc(state.senderName) + '</div><div style="height:1px;width:120px;background:#cbd5e1;margin:4px auto 0;"></div></div>' +
+                  '</div>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+
+            '<div class="btn-row" style="justify-content:space-between;">' +
+              '<div style="display:flex;flex-wrap:wrap;gap:10px;">' +
+                '<button type="button" class="btn-primary" id="btn-download-cert">⬇ حفظ الشهادة كصورة رسمية</button>' +
+                '<button type="button" class="btn-amber" id="btn-copy-reply">نسخ رد الصلح لـ ' + esc(state.senderName) + '</button>' +
+              '</div>' +
+              '<button type="button" class="btn-outline" id="btn-restart">↻ إعادة الرحلة</button>' +
+            '</div>' +
+          '</div>';
+
+        document.getElementById('btn-copy-reply').addEventListener('click', function () {
+          sound.playChime(2);
+          var replyTxt = 'يا ' + state.senderName + '، قبلت اعتذارك وطلعنا شهادة الصلح الرسمية بتاعتنا (' + state.closingBadge + '). واختياري للتعويض عن بُعد هو: ' + giftSummary + '.';
+          if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(replyTxt).catch(function () {});
+          this.textContent = '✓ تم نسخ رسالة الرد';
+        });
+
+        document.getElementById('btn-restart').addEventListener('click', function () {
+          sound.playTap();
+          state.scene = 0;
+          state.certIssued = false;
+          renderScene();
+        });
+
+        document.getElementById('btn-download-cert').addEventListener('click', function () {
+          sound.playChime(3);
+          var c = document.createElement('canvas');
+          c.width = 1400; c.height = 1720;
+          var ctx = c.getContext('2d');
+          ctx.fillStyle = '#FFFDF7'; ctx.fillRect(0, 0, c.width, c.height);
+          ctx.strokeStyle = '#1E1B4B'; ctx.lineWidth = 10; ctx.strokeRect(44, 44, c.width - 88, c.height - 88);
+          ctx.strokeStyle = '#B45309'; ctx.lineWidth = 4; ctx.strokeRect(64, 64, c.width - 128, c.height - 128);
+          ctx.strokeStyle = '#D97706'; ctx.lineWidth = 1.5; ctx.strokeRect(78, 78, c.width - 156, c.height - 156);
+          ctx.direction = 'rtl'; ctx.textAlign = 'center';
+          ctx.fillStyle = '#92400E'; ctx.font = 'bold 24px sans-serif'; ctx.fillText('وثيقة مودة واحترام متبادل · رقم SOLH-2026', 700, 155);
+          ctx.fillStyle = '#1E1B4B'; ctx.font = 'bold 72px serif'; ctx.fillText('شهادة صلح رسمية', 700, 248);
+          ctx.fillStyle = '#334155'; ctx.font = '28px sans-serif'; ctx.fillText('تشهد هذه الوثيقة بتصفية النفوس وتجديد الود والاحترام بين', 700, 352);
+          ctx.fillStyle = '#1E1B4B'; ctx.font = 'bold 46px serif'; ctx.fillText(state.senderName + '   ✦   ' + state.recipientName, 700, 424);
+          ctx.fillStyle = '#64748B'; ctx.font = '24px sans-serif'; ctx.fillText('تحريراً في ' + dateStr + ' · ' + state.closingBadge, 700, 476);
+
+          ctx.fillStyle = '#F8FAFC'; ctx.strokeStyle = '#CBD5E1'; ctx.lineWidth = 2; ctx.fillRect(130, 520, 1140, 300); ctx.strokeRect(130, 520, 1140, 300);
+          ctx.fillStyle = '#92400E'; ctx.font = 'bold 28px sans-serif'; ctx.fillText('الوعود الثلاثة المحفوظة في برطمان العهد', 700, 575);
+          ctx.fillStyle = '#1E293B'; ctx.font = '24px sans-serif';
+          promises.forEach(function (p, i) { ctx.fillText('✦  ' + p.title + ': ' + p.detail, 700, 640 + i * 54); });
+
+          ctx.fillStyle = '#FEFCE8'; ctx.strokeStyle = '#FDE68A'; ctx.fillRect(130, 855, 1140, 150); ctx.strokeRect(130, 855, 1140, 150);
+          ctx.fillStyle = '#92400E'; ctx.font = 'bold 25px sans-serif'; ctx.fillText('كلمة ' + state.recipientName + ' الختامية', 700, 908);
+          ctx.fillStyle = '#1E293B'; ctx.font = '26px sans-serif'; ctx.fillText('"' + (state.mutualNote.trim() || 'حصل خير، وربنا يديم الاحترام والتقدير.').slice(0, 74) + '"', 700, 962);
+
+          ctx.fillStyle = '#EEF2FF'; ctx.strokeStyle = '#A5B4FC'; ctx.fillRect(180, 1045, 1040, 145); ctx.strokeRect(180, 1045, 1040, 145);
+          ctx.fillStyle = '#312E81'; ctx.font = 'bold 28px sans-serif'; ctx.fillText('كوبون التعويض عن بُعد: ' + giftSummary, 700, 1105);
+          ctx.fillStyle = '#4338CA'; ctx.font = '23px sans-serif'; ctx.fillText('هدية تصلك من ' + state.senderName + ' لحد عندك', 700, 1152);
+
+          ctx.fillStyle = '#FEF3C7'; ctx.strokeStyle = '#B45309'; ctx.lineWidth = 4;
+          ctx.beginPath(); ctx.arc(700, 1370, 92, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+          ctx.fillStyle = '#92400E'; ctx.font = 'bold 22px sans-serif'; ctx.fillText('ميثاق مودة', 700, 1358);
+          ctx.fillStyle = '#065F46'; ctx.fillText('مُعتمد ✓', 700, 1396);
+
+          ctx.fillStyle = '#475569'; ctx.font = 'bold 22px sans-serif';
+          ctx.fillText('توقيع ' + state.recipientName, 320, 1290);
+          ctx.fillText('تأكيد ' + state.senderName, 1080, 1290);
+          ctx.fillStyle = '#1E1B4B'; ctx.font = 'bold 34px serif'; ctx.fillText(state.senderName, 1080, 1380);
+
+          function finishDownload() {
+            var a = document.createElement('a');
+            a.download = 'shihadat-solh-' + (state.recipientName || 'khaled') + '.png';
+            a.href = c.toDataURL('image/png');
+            a.click();
+          }
+          if (state.signatureDataUrl) {
+            var si = new Image();
+            si.onload = function () { ctx.drawImage(si, 170, 1310, 300, 120); finishDownload(); };
+            si.onerror = finishDownload;
+            si.src = state.signatureDataUrl;
+          } else {
+            finishDownload();
+          }
+        });
+      }
+
+      /* ================= Global Header Listeners ================= */
+      document.getElementById('brand-home-btn').addEventListener('click', function () {
+        sound.playTap();
+        state.scene = 0;
+        renderScene();
+      });
+
+      document.getElementById('btn-back').addEventListener('click', function () {
+        if (state.scene > 0) {
+          sound.playTap();
+          state.scene -= 1;
+          renderScene();
+        }
+      });
+
+      document.getElementById('btn-ambient').addEventListener('click', function () {
+        var order = ['off', 'music', 'nature'];
+        var next = order[(order.indexOf(sound.ambientMode) + 1) % order.length];
+        if (next !== 'off' && sound.muted) sound.setMuted(false);
+        sound.setAmbientMode(next);
+        updateChrome();
+        if (state.scene === 1) renderConfession();
+      });
+
+      document.getElementById('btn-mute').addEventListener('click', function () {
+        sound.setMuted(!sound.muted);
+        if (!sound.muted) sound.playTap();
+        updateChrome();
+      });
+
+      renderScene();
+    })();
+  </script>
+</body>
+</html>
